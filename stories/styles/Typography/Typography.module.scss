@@ -1,0 +1,83 @@
+@use "app/(frontend)/styles/typography" as *;
+
+.eyebrow {
+  color: #333;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+}
+
+.htmlWrapper {
+  @include bodyBase;
+
+  margin-bottom: 32px;
+}
+
+:global {
+  .headerDesktopXl {
+    @include headerDesktopXl;
+  }
+
+  .headerDesktopLg {
+    @include headerDesktopLg;
+  }
+
+  .headerDesktopMd {
+    @include headerDesktopMd;
+  }
+
+  .headerDesktopSm {
+    @include headerDesktopSm;
+  }
+
+  .headerMobileXl {
+    @include headerMobileXl;
+  }
+
+  .headerMobileLg {
+    @include headerMobileLg;
+  }
+
+  .headerMobileMd {
+    @include headerMobileMd;
+  }
+
+  .headerMobileSm {
+    @include headerMobileSm;
+  }
+
+  .body1 {
+    @include body1;
+  }
+
+  .body2 {
+    @include body2;
+  }
+
+  .body3 {
+    @include body3;
+  }
+
+  .body4 {
+    @include body4;
+  }
+
+  .body5 {
+    @include body5;
+  }
+
+  .body6 {
+    @include body6;
+  }
+
+  .body7 {
+    @include body7;
+  }
+
+  .body8 {
+    @include body8;
+  }
+
+  .body9 {
+    @include body9;
+  }
+}

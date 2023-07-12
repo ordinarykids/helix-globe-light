@@ -1,0 +1,81 @@
+@use "../../styles/colors" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/spacing" as s;
+@use "../../styles/typography" as *;
+
+.wrap {
+  padding-top: to-rem(40);
+  padding-bottom: to-rem(40);
+  background-color: $darkblue-100;
+  background-image: url("../../../../public/globe_background.svg");
+
+  @include media-breakpoint-up(md) {
+    padding-top: to-rem(64);
+    padding-bottom: to-rem(64);
+  }
+}
+
+.container {
+  @include container;
+}
+
+.titleWrap {
+  @include container;
+
+  text-align: center;
+}
+
+.header {
+  @include h3;
+
+  margin-bottom: to-rem(16);
+  color: $white;
+}
+
+.subheader {
+  @include body5;
+
+  margin-bottom: to-rem(40);
+  color: $white;
+}
+
+.logoGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: s.$grid-column-gap-md;
+
+  @include media-breakpoint-up(md) {
+    gap: s.$grid-column-gap;
+  }
+}
+
+.logo {
+  display: flex;
+  flex: 0 0 calc(50% - (s.$grid-column-gap-md / 2));
+  max-width: 176px;
+  border-radius: 4px;
+  background-color: $white;
+  overflow: hidden;
+
+  @include media-breakpoint-up(sm) {
+    min-width: 167px;
+  }
+
+  &_Inner {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 81.82%;
+  }
+
+  &_Image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: calc(100% - 20px);
+    max-height: calc(100% - 20px);
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+  }
+}

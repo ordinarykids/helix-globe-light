@@ -1,0 +1,85 @@
+@use "../../styles/colors" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/spacing" as *;
+@use "../../styles/typography" as *;
+
+.wrap {
+  background-color: $coolgray-300;
+}
+
+.container {
+  @include containerGrid;
+
+  padding-top: to-rem(40);
+  padding-bottom: to-rem(80);
+  row-gap: $spacing-large;
+
+  @include media-breakpoint-up(md) {
+    padding-top: to-rem(64);
+    padding-bottom: to-rem(128);
+  }
+}
+
+.hero {
+  &Left {
+    @include columns(1, -1);
+
+    @include media-breakpoint-up(lg) {
+      @include spanColumns(6, 1);
+    }
+  }
+
+  &Header {
+    margin-bottom: to-rem(24);
+    text-align: center;
+
+    @include media-breakpoint-down(md) {
+      @include h2;
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding-right: $spacing-x-large;
+      text-align: left;
+    }
+  }
+
+  &Subheader {
+    @include body1;
+
+    margin-bottom: to-rem(32);
+    text-align: center;
+
+    @include media-breakpoint-up(lg) {
+      text-align: left;
+    }
+  }
+
+  &Right {
+    @include columns(1, -1);
+
+    @include media-breakpoint-up(lg) {
+      @include spanColumns(6, 7);
+    }
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row-start: 1;
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+.link {
+  padding-top: to-rem(16);
+  text-align: center;
+
+  @include media-breakpoint-down(lg) {
+    & > a {
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+}

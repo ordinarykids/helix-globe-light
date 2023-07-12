@@ -1,0 +1,61 @@
+@use "../../../app/(frontend)/styles/mixins" as *;
+
+.main {
+  @include containerGrid;
+
+  position: relative;
+  min-height: 400px;
+}
+
+.column {
+  background-color: pink;
+  grid-row: 1;
+
+  &-hide {
+    &-md {
+      @include media-breakpoint-down(md) {
+        display: none;
+      }
+    }
+
+    &-sm {
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+    }
+  }
+}
+
+.span {
+  &Container {
+    @include containerGrid;
+
+    position: absolute;
+    inset: 0;
+    row-gap: 24px;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  border: 1px solid blue;
+  background-color: lightblue;
+  font-family: "Courier New", Courier, monospace;
+
+  &-6 {
+    @include spanColumns(6, 3);
+  }
+
+  &-7 {
+    @include columns(5, 12);
+
+    @include media-breakpoint-down(md) {
+      @include columns(2, -1);
+    }
+  }
+
+  &-full {
+    @include columns(1, -1);
+  }
+}

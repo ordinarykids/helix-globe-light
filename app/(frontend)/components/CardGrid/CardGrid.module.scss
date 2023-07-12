@@ -1,0 +1,39 @@
+@use "../../styles/mixins" as *;
+
+.wrap {
+  @include containerGrid;
+
+  row-gap: $grid-column-gap;
+
+  @include media-breakpoint-up(md) {
+    > * {
+      @include spanColumns(6);
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    > :nth-child(odd) {
+      @include columns(2, 7);
+    }
+
+    > :nth-child(even) {
+      @include spanColumns(5);
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    > :nth-child(odd) {
+      @include columns(3, 7);
+    }
+
+    > :nth-child(even) {
+      @include spanColumns(4);
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    > * {
+      @include spanColumns(4);
+    }
+  }
+}

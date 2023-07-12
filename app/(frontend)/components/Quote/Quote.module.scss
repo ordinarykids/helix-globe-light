@@ -1,0 +1,100 @@
+@use "../../styles/typography" as *;
+@use "../../styles/colors" as *;
+@use "../../styles/mixins" as *;
+
+.wrap {
+  padding-top: to-rem(80);
+  padding-bottom: to-rem(80);
+  background-color: $charcoal-300;
+  color: $white;
+  overflow: hidden;
+
+  @include media-breakpoint-up(md) {
+    padding-top: to-rem(160);
+    padding-bottom: to-rem(160);
+  }
+}
+
+.container {
+  @include containerGrid;
+
+  position: relative;
+}
+
+.textWrap {
+  @include spanColumns(11, 1, lg);
+
+  position: relative;
+  margin: 0;
+}
+
+.quoteWrap {
+  @include media-breakpoint-up(md) {
+    display: flex;
+    column-gap: to-rem(48);
+  }
+}
+
+.quotationMark {
+  @include media-breakpoint-down(md) {
+    margin-bottom: to-rem(24);
+    text-align: center;
+  }
+
+  @include media-breakpoint-up(md) {
+    flex-shrink: 0;
+  }
+}
+
+.quote {
+  @include fontSize(36, 56);
+
+  margin: 0;
+  font-family: $font-family-tt-norms;
+  font-weight: 344;
+
+  @include media-breakpoint-down(sm) {
+    @include fontSize(20, 32);
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.figcaption {
+  margin-top: to-rem(40);
+}
+
+.attribution {
+  @include body3;
+
+  margin-bottom: 0;
+
+  @include media-breakpoint-down(sm) {
+    @include body7;
+  }
+}
+
+.title {
+  @include body4;
+
+  margin-top: to-rem(8);
+  margin-bottom: 0;
+
+  @include media-breakpoint-down(sm) {
+    @include body9;
+  }
+}
+
+.bgImg {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translateY(calc(100% + 26px));
+  opacity: 0.4;
+
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}

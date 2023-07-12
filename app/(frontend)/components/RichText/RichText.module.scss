@@ -1,0 +1,34 @@
+@use "../../styles/typography" as *;
+@use "../../styles/colors" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/spacing";
+
+.container {
+  @include containerGrid;
+}
+
+.textWrap {
+  @include columns(1, -1);
+
+  @include media-breakpoint-up(sm) {
+    @include columns(2, 8);
+  }
+
+  @include media-breakpoint-up(md) {
+    @include columns(4, 10);
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  .container__bgdarkBlue & {
+    > * {
+      color: $white;
+    }
+
+    a {
+      color: $link-color-on-dark;
+    }
+  }
+}

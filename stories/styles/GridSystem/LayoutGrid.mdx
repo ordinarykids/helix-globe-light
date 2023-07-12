@@ -1,0 +1,61 @@
+{/* LayoutGrid.mdx */}
+
+import { Canvas, Meta, Story } from '@storybook/blocks';
+import * as LayoutGridStories from './LayoutGrid.stories';
+
+<Meta of={LayoutGridStories} />
+
+# Grid System
+
+This is the global responsive grid system for this project. The default
+grid settings for this project are as follows:
+
+* **12 columns** default, then **8 and 4 columns** below the `md` and `sm` breakpoints respectively
+* **24px gutters**
+* **96** at and above the `md` breakpoint
+* **20px margin** below the `sm` breakpoint
+* **1174px max width containers**
+
+>**NB!** The layout grid is not a React component, but is instead created via Sass mixins.
+All of Aleph's standard mixins [are documented here](https://www.npmjs.com/package/@aleph/nought-sass-mixins).
+
+
+## Grid Containers
+
+A standard grid, constrained by the `container` max width.
+```scss
+@include grid;
+@include container;
+
+// helper mixin for combining both
+@include containerGrid;
+```
+<Canvas of={LayoutGridStories.Grid} />
+
+## Column Mixins
+
+Elements can span columns on the grid a few different ways with mixins. Note that, 
+by default, any elements using these mixins will expand to span the full width of
+the grid at the smallest breakpoint. This can be overridden in the mixin itself. 
+
+Note the following three elements, using the code below to render:
+
+```scss
+.span-6 {
+  @include spanColumns(6, 3);
+}
+
+.span-7 {
+  @include columns(5, 12);
+
+  @include media-breakpoint-down(md) {
+    @include columns(2, -1);
+  }
+}
+
+.span-full {
+  @include columns(1, -1);
+}
+```
+
+<Canvas of={LayoutGridStories.Columns} />
