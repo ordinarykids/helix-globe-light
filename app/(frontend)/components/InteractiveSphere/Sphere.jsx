@@ -4,6 +4,7 @@ import { useFrame } from '@react-three/fiber'
 import { ConvexGeometry } from 'three/examples/jsm/geometries/ConvexGeometry'
 import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils'
 import { TextureLoader } from 'three'
+import { Wireframe } from '@react-three/drei'
 import * as THREE from 'three'
 
 function Sphere() {
@@ -116,18 +117,19 @@ function Sphere() {
   const points4 = new THREE.Points(pointsGeometry4, pointsMaterial4)
   textureGroup.add(points4)
 
+  const pointsGeometry = new THREE.BufferGeometry().setFromPoints(vertices)
   // const pointsGeometry = new THREE.BufferGeometry().setFromPoints(vertices)
 
-  const meshMaterial = new THREE.MeshLambertMaterial({
+  // const meshMaterial = new THREE.MeshLambertMaterial({
 
-    opacity: 0.5,
-    side: THREE.DoubleSide,
-    transparent: false,
-    wireframe: true,
-  })
-  //meshMaterial.color.setHex(wireframeWireColor);
-  // DRAW WIREFRAME FOR EACH VERTEX
-  meshMaterial.color.setHex('0xffffcc');
+  //   opacity: 0.5,
+  //   side: THREE.DoubleSide,
+  //   transparent: false,
+  //   wireframe: true,
+  // })
+  // //meshMaterial.color.setHex(wireframeWireColor);
+  // // DRAW WIREFRAME FOR EACH VERTEX
+  // meshMaterial.color.setHex('0xffffcc');
 
   const meshGeometry = new ConvexGeometry(vertices)
 
@@ -137,7 +139,30 @@ function Sphere() {
       <points geometry={pointsGeometry2} material={pointsMaterial2} />
       <points geometry={pointsGeometry3} material={pointsMaterial3} />
       <points geometry={pointsGeometry4} material={pointsMaterial4} />
-      <mesh  geometry={meshGeometry} material={meshMaterial} />
+      <mesh   >
+        <Wireframe
+          geometry={meshGeometry} // Will create the wireframe based on input geometry.
+
+          // Other props
+       //   simplify={true} // Remove some edges from wireframes
+          fill={"#cccccc"} // Color of the inside of the wireframe
+          fillMix={1} // Mix between the base color and the Wireframe 'fill'. 0 = base; 1 = wireframe
+          fillOpacity={0} // Opacity of the inner fill
+          stroke={"#cccccc"} // Color of the stroke
+          strokeOpacity={1} // Opacity of the stroke
+          thickness={0.01} // Thinkness of the lines
+          colorBackfaces={false} // Whether to draw lines that are facing away from the camera
+          backfaceStroke={"#c33333"} // Color of the lines that are facing away from the camera
+          // dashInvert={true} // Invert the dashes
+          // dash={false} // Whether to draw lines as dashes
+          // dashRepeats={4} // Number of dashes in one seqment
+          // dashLength={0.5} // Length of each dash
+          squeeze={true} // Narrow the centers of each line segment
+          squeezeMin={1} // Smallest width to squueze to
+          squeezeMax={1} // Largest width to squeeze from
+        />
+      </mesh>
+      
     </group>
   )
 }

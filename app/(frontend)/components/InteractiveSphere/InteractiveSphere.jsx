@@ -21,7 +21,7 @@ function Scene() {
   return (
     <div className={styles.wrap}>
       <Canvas style={{ background: '#F2F2F2' }}>
-        {/* <Controls /> */}
+        <Controls />
         <PerspectiveCamera
           fov={10}
           aspect={window.innerWidth / window.innerHeight}
