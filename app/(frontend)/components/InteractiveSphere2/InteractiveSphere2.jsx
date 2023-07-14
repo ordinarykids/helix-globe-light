@@ -20,7 +20,7 @@ const Controls = () => {
 function Scene() {
   return (
     <div className={styles.wrap}>
-      <Canvas style={{ background: '#F2F2F2' }} linear flat>
+        <Canvas style={{ background: '#F2F2F2' }} linear flat>
         <Controls />
         <PerspectiveCamera
           fov={1}

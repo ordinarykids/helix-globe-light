@@ -24,6 +24,7 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/(frontend)/components/InteractiveSphere/InteractiveSphere.jsx", "app/(frontend)/components/InteractiveSphere/Sphere.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/(frontend)/components/InteractiveSphere/InteractiveSphere.jsx", "app/(frontend)/components/InteractiveSphere/Sphere.jsx","app/(frontend)/components/InteractiveSphere2/InteractiveSphere2.jsx",
+    "app/(frontend)/components/InteractiveSphere2/Sphere.jsx"],
   "exclude": ["node_modules"]
 }

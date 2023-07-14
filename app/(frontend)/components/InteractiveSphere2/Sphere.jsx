@@ -2,6 +2,10 @@
 import { useRef, useMemo } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { ConvexGeometry } from 'three/examples/jsm/geometries/ConvexGeometry'
+
+// import { SphereGeometry } from 'three/examples/jsm/geometries/SphereGeometry'
+
+
 import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils'
 import { TextureLoader } from 'three'
 import { Wireframe } from '@react-three/drei'
@@ -28,7 +32,7 @@ function Sphere() {
 
   useFrame(() => {
     group.current.rotation.y += 0.001
-    group.current.rotation.x -= 0.003
+    // group.current.rotation.x -= 0.001
     group.current.rotation.z += 0.001
   })
 
@@ -132,6 +136,34 @@ function Sphere() {
   // meshMaterial.color.set(0x333333);
 
   const meshGeometry = new ConvexGeometry(vertices)
+
+
+
+
+  const vector = new THREE.Vector3();
+
+  const objects = Array.from(Array(100).keys())
+
+  for (let i = 0, l = objects.length; i < l; i++) {
+
+    const phi = Math.acos(- 1 + (2 * i) / l);
+    const theta = Math.sqrt(l * Math.PI) * phi;
+
+    const object = new THREE.Object3D();
+
+    object.position.setFromSphericalCoords(800, phi, theta);
+
+    vector.copy(object.position).multiplyScalar(2);
+
+    object.lookAt(vector);
+
+
+    vertices1.push(object);
+
+  }
+
+
+
 
   return (
     <group ref={group}>

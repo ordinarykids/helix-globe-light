@@ -1,3 +1,6 @@
+"use client"
+
+
 import cx from 'classnames'
 import React from 'react'
 import Image from 'next/image'
@@ -7,6 +10,8 @@ import type ImageField from 'app/(frontend)/types/image'
 import type LinkField from 'app/(frontend)/types/link'
 import Button from '../Button/Button'
 import styles from './HomePageHero.module.scss'
+
+import  InteractiveSphere  from '../InteractiveSphere3/InteractiveSphere2'
 
 export type HomePageHeroType = {
     header?: string | null,
@@ -48,14 +53,7 @@ export default function HomePageHero({
             )
             : (image) && (
               <div className={cx(styles.heroImage)}>
-                <Image
-                  className={cx(styles.image)}
-                  src={image.url}
-                  width={image.width}
-                  height={image.height}
-                  alt={image.altText ?? ''}
-                  title={image.title ?? undefined}
-                />
+                <InteractiveSphere />
               </div>
             )}
         </div>
