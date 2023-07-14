@@ -19,7 +19,7 @@ function Sphere() {
   const wireframeWireColor = '0xCCCCCC';
 
   const sphereGeometry = useMemo(() => {
-    const geometry = new THREE.SphereGeometry(3, 9 , 11)
+    const geometry = new THREE.SphereGeometry(3, 149 , 141)
     geometry.deleteAttribute('normal')
     geometry.deleteAttribute('uv')
     return BufferGeometryUtils.mergeVertices(geometry)

@@ -23,11 +23,11 @@ function Scene() {
         <Canvas style={{ background: '#F2F2F2' }} linear flat>
         <Controls />
         <PerspectiveCamera
-          fov={1}
-          aspect={window.innerWidth / window.innerHeight}
-          near={1}
-          far={1000}
-          position={[0, 0, 10]}
+          fov={10}
+          aspect={window.innerWidth / window.innerHeight*3}
+          near={100}
+          far={10}
+          position={[0, 0, 100]}
         />
         <ambientLight intensity={20} />
         {/* <SpotLight

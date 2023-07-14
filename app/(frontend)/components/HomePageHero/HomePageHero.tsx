@@ -11,7 +11,7 @@ import type LinkField from 'app/(frontend)/types/link'
 import Button from '../Button/Button'
 import styles from './HomePageHero.module.scss'
 
-import  InteractiveSphere  from '../InteractiveSphere3/InteractiveSphere2'
+import  InteractiveSphere  from '../InteractiveSphere3/InteractiveSphere3'
 
 export type HomePageHeroType = {
     header?: string | null,
