@@ -73,7 +73,7 @@ function Sphere() {
   scene.add(sphere);
 
 
-//bumpasdasdasdasd
+//bumpasdasdasdasd - tyhis 
 
 
 
