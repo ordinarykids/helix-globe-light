@@ -12,6 +12,74 @@ import { Wireframe } from '@react-three/drei'
 import * as THREE from 'three'
 
 function Sphere() {
+
+  var table = [];
+
+  for (var i = 1; i <= 900; i++) {
+    table.push(i);
+  }
+
+
+  for (let i = 0; i < table.length; i += 5) {
+
+    const element = document.createElement('div');
+    //	background - image: url(https://helix-tw-03.vercel.app/images/cirlce.png);
+
+    element.style.backgroundImage = "url(" + getShape() + ")";
+    element.className = 'element';
+
+    const objectCSS = new CSS3DObject(element);
+    objectCSS.position.x = Math.random() * 4000 - 2000;
+    objectCSS.position.y = Math.random() * 4000 - 2000;
+    objectCSS.position.z = Math.random() * 4000 - 2000;
+    scene.add(objectCSS);
+
+    objects.push(objectCSS);
+
+    //
+
+    const object = new THREE.Object3D();
+    // object.position.x = (table[i + 3] * 10) - 1330;
+    // object.position.y = - (table[i + 4] * 180) + 990;
+
+    targets.table.push(object);
+
+  }
+
+
+  const vector = new THREE.Vector3();
+
+  for (let i = 0, l = objects.length; i < l; i++) {
+
+    const phi = Math.acos(- 1 + (2 * i) / l);
+    const theta = Math.sqrt(l * Math.PI) * phi;
+
+    const object = new THREE.Object3D();
+
+    object.position.setFromSphericalCoords(800, phi, theta);
+
+    vector.copy(object.position).multiplyScalar(2);
+
+    object.lookAt(vector);
+
+    targets.sphere.push(object);
+
+  }
+
+			
+  const geometry = new THREE.SphereGeometry(10, 32, 16);
+  const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
+  const sphere = new THREE.Mesh(geometry, material);
+  scene.add(sphere);
+
+
+//bump
+
+
+
+  
+
+
   const group = useRef()
   const textureGroup = new THREE.Group()
 
@@ -19,7 +87,7 @@ function Sphere() {
   const wireframeWireColor = '0xCCCCCC';
 
   const sphereGeometry = useMemo(() => {
-    const geometry = new THREE.SphereGeometry(233, 309 , 421)
+    const geometry = new THREE.SphereGeometry(10, 10 , 16)
     geometry.deleteAttribute('normal')
     geometry.deleteAttribute('uv')
     return BufferGeometryUtils.mergeVertices(geometry)
@@ -163,11 +231,29 @@ function Sphere() {
   }
 
 
+  function Sphere() {
+    return (
+      <mesh visible userData={{ test: "hello" }} position={[0, 0, 0]} castShadow>
+        <sphereGeometry attach="geometry" args={[10, 16, 16]} />
+        <meshStandardMaterial
+          attach="material"
+          color="black"
+          transparent
+          wireframe
+          roughness={0.1}
+          metalness={0.1}
+        />
+      </mesh>
+    );
+  }
+
+
+
 
 
   return (
     <group ref={group}>
-    
+      {/* <Sphere /> */}
       <points geometry={pointsGeometry1} material={pointsMaterial1} />
       <points geometry={pointsGeometry2} material={pointsMaterial2} />
       <points geometry={pointsGeometry3} material={pointsMaterial3} />
