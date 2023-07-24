@@ -61,7 +61,7 @@ function Sphere() {
   }
 
 
-  const vector = new THREE.Vector3();
+  const vector2 = new THREE.Vector3();
 
   for (let i = 0, l = objects.length; i < l; i++) {
 
@@ -74,7 +74,7 @@ function Sphere() {
 
     vector.copy(object.position).multiplyScalar(2);
 
-    object.lookAt(vector);
+    object.lookAt(vector2);
 
     targets.sphere.push(object);
 

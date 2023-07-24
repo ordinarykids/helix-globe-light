@@ -1,1 +1,1 @@
-export { default } from './InteractiveSphere2'
+export { default } from './InteractiveSphere3'
