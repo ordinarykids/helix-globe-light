@@ -30,7 +30,7 @@ function Sphere() {
 
   const group = useRef()
   const textureGroup = new THREE.Group()
-  const gltf = useLoader(GLTFLoader, './w2.glb')
+  const gltf = useLoader(GLTFLoader, './w8.glb')
 
   return (
     <a.mesh
@@ -41,18 +41,18 @@ function Sphere() {
     >
     <group ref={group}>
 
-    {/* <directionalLight position={[3.3, 1.0, 4.4]} castShadow /> */}
-    <primitive
-      ref={ref}
-      object={gltf.scene}
-      position={[0, 1, 0]}
-      // children-0-castShadow
-    />
-    {/* <Circle args={[10]} rotation-x={-Math.PI / 2} receiveShadow>
-      <meshStandardMaterial />
-    </Circle> */}
-    <OrbitControls target={[0, 1, 0]} />
-    {/* <axesHelper args={[5]} /> */}
+      <directionalLight position={[3.3, 111.0, 4.4]} castShadow />
+      <primitive
+        ref={ref}
+        object={gltf.scene}
+        position={[0, 0, 2]}
+        // children-0-castShadow
+      />
+      {/* <Circle args={[10]} rotation-x={-Math.PI / 2} receiveShadow>
+        <meshStandardMaterial />
+      </Circle> */}
+      <OrbitControls  />
+      {/* <axesHelper args={[5]} /> */}
 
 
 
