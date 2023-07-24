@@ -17,6 +17,11 @@ const Controls = () => {
   return <OrbitControls ref={ref} args={[camera, gl.domElement]} />
 }
 
+// let aspectRatio = 1;
+// if(window){
+//   aspectRatio = window.innerWidth / window.innerHeight
+// };
+
 function Scene() {
   return (
     <div className={styles.wrap}>
@@ -24,7 +29,7 @@ function Scene() {
         <Controls />
         <PerspectiveCamera
           fov={1}
-          aspect={window.innerWidth / window.innerHeight}
+          // aspect={aspectRatio}
           near={1}
           far={1000}
           position={[0, 0, 10]}
