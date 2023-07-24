@@ -51,7 +51,7 @@ function Sphere() {
       {/* <Circle args={[10]} rotation-x={-Math.PI / 2} receiveShadow>
         <meshStandardMaterial />
       </Circle> */}
-      <OrbitControls  />
+      {/* <OrbitControls  /> */}
       {/* <axesHelper args={[5]} /> */}
 
 
