@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import ttNorms from './lib/fonts'
 import SiteHeader from './components/SiteHeader'
+import InteractiveSphere from './components/InteractiveSphere4'
 import './styles/globals.scss'
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({
         {/* @ts-expect-error Async Server Component */}
         <SiteHeader />
         {children}
+        <InteractiveSphere />
       </body>
     </html>
   )

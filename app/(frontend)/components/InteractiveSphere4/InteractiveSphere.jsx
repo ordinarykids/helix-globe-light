@@ -26,7 +26,7 @@ function Scene() {
 
   return (
     <div className={styles.wrap}>
-      <Canvas style={{ background: '#F2F2F2' }} linear >
+      <Canvas style={{ background: '#F2F2F2' }} linear flat>
         {/* <Controls /> */}
         <PerspectiveCamera
           fov={100}
@@ -35,7 +35,7 @@ function Scene() {
           far={1000}
           position={[0, 0, 10]}
         />
-        <ambientLight intensity={2} />
+        <ambientLight intensity={1.2} />
         {/* <SpotLight
           distance={5}
           angle={0.15}

@@ -8,7 +8,7 @@ import type LinkField from 'app/(frontend)/types/link'
 import Button from '../Button/Button'
 import styles from './HomePageHero.module.scss'
 
-import  InteractiveSphere  from '../InteractiveSphere4/InteractiveSphere'
+//import  InteractiveSphere  from '../InteractiveSphere4/InteractiveSphere'
 
 export type HomePageHeroType = {
     header?: string | null,
@@ -44,17 +44,7 @@ export default function HomePageHero({
           )}
         </div>
         <div className={cx(styles.heroRight)}>
-          {media
-            ? (
-              <div className={cx(styles.heroAnimation)}>
-                <h2>FPO animation</h2>
-              </div>
-            )
-            : (image) && (
-              <div className={cx(styles.heroImage)}>
-                <InteractiveSphere />
-              </div>
-            )}
+         
         </div>
       </div>
     </div>
