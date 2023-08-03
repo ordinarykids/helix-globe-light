@@ -32,8 +32,8 @@
     }
   }
 
-  &Header { 
-    margin-bottom: $page-section-title-margin-bottom;
+  &Header {
+    margin-bottom: to-rem($page-section-title-margin-bottom);
     text-align: center;
 
     @include media-breakpoint-down(md) {

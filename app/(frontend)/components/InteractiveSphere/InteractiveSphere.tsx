@@ -1,9 +1,11 @@
 'use client'
 
+/* eslint-disable */
 import * as THREE from 'three'
 import { Suspense, useEffect, useLayoutEffect, useState, useRef } from 'react'
 import { Canvas, useFrame, OrbitControls, useThree } from '@react-three/fiber'
 import { ScrollControls, Sky, useScroll, useGLTF, useAnimations, extend } from '@react-three/drei'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './InteractiveSphere.module.scss'
 
 
@@ -32,17 +34,17 @@ function Sphere() {
         // const scaleUpPerPxScroll = 1 + (currentScrollY / 100)
         // sphereWrapRef.current.style.transform = `scale(${scaleUpPerPxScroll}) translateX(-${currentScrollY}px)`
         sphereWrapRef.current.style.opacity = `${Math.max(1 - (currentScrollY / 900), 0)}`
-        sphereWrapRef.current.style.top = `${Math.max(1 - (currentScrollY / 900), 0)}`
+        // sphereWrapRef.current.style.top = `${Math.max(1 - (currentScrollY / 900), 0)}`
 
-       // sphereWrapRef.current.style.transform = `translateY(${currentScrollY}px)`
+        // sphereWrapRef.current.style.transform = `translateY(${currentScrollY}px)`
         sphereWrapRef.current.style.left = '200px'
         if (currentScrollY > 400) {
-         // sphereWrapRef.current.style.position = 'relative'
+          // sphereWrapRef.current.style.position = 'relative'
         }
 
       }
-      
-         
+
+
     }
     window.addEventListener('scroll', onScroll)
 
@@ -51,16 +53,16 @@ function Sphere() {
 
 
   return (
-    <div className={styles.wrap} ref={sphereWrapRef}>
-    <Canvas width="100%" shadows camera={{ position: [0, 0,1] }}>
-      <ambientLight intensity={1} />
-      {/* <Controls /> */}
-      {/* <fog attach="fog" args={['#ff5020', 5, 18]} /> */}
-      {/* <spotLight angle={0.14} color="#ffd0d0" penumbra={1} position={[25, 50, -20]} shadow-mapSize={[2048, 2048]} shadow-bias={-0.0001} castShadow /> */}
-      {/* <Sky scale={1000} sunPosition={[2, 0.4, 10]} /> */}
+    <div id='interactiveSphere' className={styles.wrap} ref={sphereWrapRef}>
+      <Canvas width="100%" shadows camera={{ position: [0, 0, 1] }} onCreated={((state) => ScrollTrigger.refresh())}>
+        <ambientLight intensity={1} />
+        {/* <Controls /> */}
+        {/* <fog attach="fog" args={['#ff5020', 5, 18]} /> */}
+        {/* <spotLight angle={0.14} color="#ffd0d0" penumbra={1} position={[25, 50, -20]} shadow-mapSize={[2048, 2048]} shadow-bias={-0.0001} castShadow /> */}
+        {/* <Sky scale={1000} sunPosition={[2, 0.4, 10]} /> */}
         <HelixSphere scale={3} position={[0, 1, 1]} />
-    </Canvas>
-    {/* <div cla></div> */}
+      </Canvas>
+      {/* <div cla></div> */}
     </div>
   )
 }
@@ -70,7 +72,7 @@ function HelixSphere({ ...props }) {
 
   const sphereWrapRef = useRef<HTMLDivElement | null>(null)
 
-  
+
   const [currentScrollY, setCurrentScrollY] = useState(0)
   useEffect(() => {
     const onScroll = () => {
@@ -78,7 +80,7 @@ function HelixSphere({ ...props }) {
         setCurrentScrollY(window.scrollY)
         // const scaleUpPerPxScroll = 1 + (currentScrollY / 100)
         // sphereWrapRef.current.style.transform = `scale(${scaleUpPerPxScroll}) translateX(-${currentScrollY}px)`
-       // sphereWrapRef.current.style.opacity = `${Math.max(1 - (currentScrollY / 1000), 0)}`
+        // sphereWrapRef.current.style.opacity = `${Math.max(1 - (currentScrollY / 1000), 0)}`
       }
     }
     window.addEventListener('scroll', onScroll)
@@ -92,17 +94,17 @@ function HelixSphere({ ...props }) {
   const { scene, nodes, animations } = useGLTF('/wtf-15.glb')
   const { actions } = useAnimations(animations, scene)
   useLayoutEffect(() => Object.values(nodes).forEach((node) => (node.receiveShadow = node.castShadow = true)))
- // useEffect(() => void (actions['Take 001'].play().paused = true), [actions])
+  // useEffect(() => void (actions['Take 001'].play().paused = true), [actions])
   useFrame((state, delta) => {
     // const action = actions['Take 001']
     // The offset is between 0 and 1, you can apply it to your models any way you like
-    const offset = 1 - currentScrollY/900;
-   // action.time = THREE.MathUtils.damp(action.time, (action.getClip().duration / 2) * offset, 100, delta)
+    const offset = 1 - currentScrollY / 900;
+    // action.time = THREE.MathUtils.damp(action.time, (action.getClip().duration / 2) * offset, 100, delta)
     state.camera.position.set(Math.sin(offset) * -9, Math.atan(offset * Math.PI * 2) * 9, Math.cos((offset * Math.PI) / 3) * -.4)
-    state.camera.rotation.set(0, offset * 42, offset*2)
+    state.camera.rotation.set(0, offset * 42, offset * 2)
     state.camera.lookAt(0, 0, 0)
   })
-  return <primitive object={scene} {...props} ref={sphereWrapRef}  />
+  return <primitive object={scene} {...props} ref={sphereWrapRef} />
 }
 
 /*
