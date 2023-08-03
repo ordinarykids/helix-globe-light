@@ -3,7 +3,7 @@
 /* eslint-disable */
 import * as THREE from 'three'
 import { Suspense, useEffect, useLayoutEffect, useState, useRef } from 'react'
-import { Canvas, useFrame, OrbitControls, useThree } from '@react-three/fiber'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { ScrollControls, Sky, useScroll, useGLTF, useAnimations, extend } from '@react-three/drei'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './InteractiveSphere.module.scss'
@@ -13,12 +13,12 @@ import styles from './InteractiveSphere.module.scss'
 
 // extend({ OrbitControls })
 
-const Controls = () => {
-  const { camera, gl } = useThree()
-  const ref = useRef()
-  useFrame(() => ref.current.update())
-  return <OrbitControls ref={ref} args={[camera, gl.domElement]} />
-}
+// const Controls = () => {
+//   const { camera, gl } = useThree()
+//   const ref = useRef()
+//   useFrame(() => ref.current.update())
+//   return <OrbitControls ref={ref} args={[camera, gl.domElement]} />
+// }
 
 function Sphere() {
 
