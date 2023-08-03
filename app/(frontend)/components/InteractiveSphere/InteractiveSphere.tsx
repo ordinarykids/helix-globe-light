@@ -54,7 +54,6 @@ function Sphere() {
 
   return (
     <div id='interactiveSphere' className={styles.wrap} ref={sphereWrapRef}>
-      /* tslint:disable */
       <Canvas  shadows camera={{ position: [0, 0, 1] }} onCreated={((state) => ScrollTrigger.refresh())}>
         <ambientLight intensity={1} />
         {/* <Controls /> */}
