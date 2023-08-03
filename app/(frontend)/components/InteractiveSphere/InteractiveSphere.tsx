@@ -42,7 +42,7 @@ function Sphere() {
 
       }
       
-        
+         
     }
     window.addEventListener('scroll', onScroll)
 
