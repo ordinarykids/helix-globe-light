@@ -8,14 +8,17 @@
 }
 
 .textWrap {
-  @include columns(1, -1);
+  @include pageSectionColumns;
 
-  @include media-breakpoint-up(sm) {
-    @include columns(2, 8);
+  text-align: center;
+
+  ol,
+  ul {
+    list-style-position: inside;
   }
 
-  @include media-breakpoint-up(md) {
-    @include columns(4, 10);
+  :global(.styledLink):not(:last-child) {
+    margin-bottom: to-rem(spacing.$p-margin-bottom);
   }
 
   > :last-child {

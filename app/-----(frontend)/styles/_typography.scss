@@ -1,0 +1,214 @@
+@use "sass:math";
+@use "./colors" as *;
+@use "./mixins" as *;
+
+$root-font-size: 16px;
+$font-family-tt-norms: var(--tt-norms);
+
+@function to-rem($value) {
+  $remValue: ($value / 16) + rem;
+
+  @return $remValue;
+}
+
+@mixin fontSize($fontSize: 16, $lineHeight: 24) {
+  font-size: $fontSize * 1px;
+  font-size: math.div($fontSize, 16) + rem;
+  line-height: $lineHeight * 1px;
+  line-height: math.div($lineHeight, 16) + rem;
+}
+
+@mixin bodyBase() {
+  @include fontSize(20, 24);
+
+  font-family: $font-family-tt-norms;
+  font-weight: 344;
+}
+
+@mixin headerDesktopXl() {
+  @include fontSize(64, 64);
+
+  font-family: $font-family-tt-norms;
+  font-weight: 620;
+}
+
+@mixin headerDesktopLg() {
+  @include fontSize(52, 56);
+
+  font-family: $font-family-tt-norms;
+  font-weight: 620;
+}
+
+@mixin headerDesktopMd() {
+  @include fontSize(36, 40);
+
+  font-family: $font-family-tt-norms;
+  font-weight: 620;
+}
+
+@mixin headerDesktopSm() {
+  @include fontSize(26, 32);
+
+  font-family: $font-family-tt-norms;
+  font-weight: 620;
+}
+
+@mixin headerMobileXl() {
+  @include fontSize(52, 56);
+
+  font-family: $font-family-tt-norms;
+  font-weight: 620;
+}
+
+@mixin headerMobileLg() {
+  @include fontSize(40, 48);
+
+  font-family: $font-family-tt-norms;
+  font-weight: 620;
+}
+
+@mixin headerMobileMd() {
+  @include fontSize(34, 40);
+
+  font-family: $font-family-tt-norms;
+  font-weight: 620;
+}
+
+@mixin headerMobileSm() {
+  @include fontSize(26, 32);
+
+  font-family: $font-family-tt-norms;
+  font-weight: 620;
+}
+
+@mixin body1() {
+  @include fontSize(20, 32);
+
+  font-family: $font-family-tt-norms;
+  font-weight: 344;
+}
+
+@mixin body2() {
+  @include fontSize(20, 24);
+
+  font-family: $font-family-tt-norms;
+  font-weight: 500;
+  letter-spacing: to-rem(0.5);
+}
+
+@mixin body3() {
+  @include fontSize(20, 24);
+
+  font-family: $font-family-tt-norms;
+  font-weight: 500;
+}
+
+@mixin body4() {
+  @include fontSize(20, 24);
+
+  font-family: $font-family-tt-norms;
+  font-weight: 233;
+}
+
+@mixin body5() {
+  @include fontSize(16, 24);
+
+  font-family: $font-family-tt-norms;
+  font-weight: 344;
+}
+
+@mixin body6() {
+  @include fontSize(16, 24);
+
+  font-family: $font-family-tt-norms;
+  font-weight: 620;
+}
+
+@mixin body7() {
+  @include fontSize(14, 24);
+
+  font-family: $font-family-tt-norms;
+  font-weight: 500;
+}
+
+@mixin body8() {
+  @include fontSize(14, 24);
+
+  font-family: $font-family-tt-norms;
+  font-weight: 344;
+}
+
+@mixin body9() {
+  @include fontSize(14, 16);
+
+  font-family: $font-family-tt-norms;
+  font-weight: 344;
+}
+
+@mixin h1() {
+  @include headerDesktopXl;
+
+  margin-top: 0;
+  margin-bottom: to-rem(24);
+  color: $darkblue-100;
+}
+
+@mixin h2() {
+  @include headerDesktopLg;
+
+  margin-top: 0;
+  margin-bottom: to-rem(24);
+  color: $darkblue-100;
+}
+
+@mixin h3() {
+  @include headerDesktopMd;
+
+  margin-top: 0;
+  margin-bottom: to-rem(24);
+  color: $darkblue-100;
+
+  @include media-breakpoint-down(md) {
+    @include headerMobileMd;
+  }
+}
+
+@mixin h4() {
+  @include headerDesktopSm;
+
+  margin-top: 0;
+  margin-bottom: to-rem(24);
+  color: $darkblue-100;
+}
+
+@mixin h5() {
+  @include body2;
+
+  margin-top: 0;
+  margin-bottom: to-rem(24);
+  color: $darkblue-100;
+}
+
+@mixin h6() {
+  @include body6;
+
+  margin-top: 0;
+  margin-bottom: to-rem(24);
+  color: $darkblue-100;
+}
+
+@mixin link() {
+  &,
+  &:visited {
+    color: $blue-300;
+    font-weight: 545;
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: underline;
+    text-underline-offset: to-rem(4);
+  }
+}

@@ -1,0 +1,90 @@
+@use "../../styles/colors" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/typography" as *;
+
+.container {
+  @include containerGrid;
+
+  row-gap: to-rem(24px);
+}
+
+.card {
+  @include columns(1, -1);
+  @include dropShadow;
+
+  display: flex;
+  padding: to-rem(40px);
+  column-gap: to-rem(39px);
+  border-radius: 15px;
+  background-color: $white;
+  overflow: hidden;
+
+  @include media-breakpoint-up(sm) {
+    align-items: center;
+  }
+
+  @include media-breakpoint-up(md) {
+    @include spanColumns(8, 3);
+  }
+
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+    row-gap: to-rem(24px);
+  }
+
+  &_TextWrap {
+    flex-basis: fit-content;
+
+    @include media-breakpoint-down(sm) {
+      order: 2;
+    }
+  }
+
+  &_HeaderWrap {
+    display: flex;
+    align-items: center;
+    column-gap: to-rem(16px);
+  }
+
+  &_Number {
+    @include headerDesktopMd;
+  }
+
+  &_Title {
+    @include body2;
+
+    margin-bottom: 0;
+    text-transform: uppercase;
+  }
+
+  &_Text {
+    @include body5;
+
+    margin-top: to-rem(8px);
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &_Icon {
+    width: 120px;
+
+    @include media-breakpoint-up(lg) {
+      flex-shrink: 0;
+    }
+
+    @include media-breakpoint-down(md) {
+      flex-shrink: 0;
+    }
+
+    @include media-breakpoint-down(sm) {
+      order: 1;
+    }
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

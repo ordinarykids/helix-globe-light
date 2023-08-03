@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import heroFPOImage from 'public/HeroFPO.svg'
 import HomePageHero from '.'
 
 const meta: Meta<typeof HomePageHero> = {
@@ -31,14 +30,6 @@ export const HomePage: Story = {
         _key: 'c5080bab2071',
       },
     ],
-    image: {
-      url: heroFPOImage,
-      width: 434,
-      height: 427,
-      altText: 'Hero FPO image',
-      aspectRatio: 1.0163934426229508,
-      blurHash: null,
-    },
     buttonText: 'Contact Us',
     buttonLink: {
       link: 'https://helix.com',

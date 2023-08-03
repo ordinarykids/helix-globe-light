@@ -1,0 +1,60 @@
+@use "../../styles/colors" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/typography" as *;
+
+.container {
+  @include containerGrid;
+
+  row-gap: to-rem(24px);
+
+  @include media-breakpoint-up(sm) {
+    row-gap: to-rem(40px);
+  }
+}
+
+.card {
+  @include spanColumns(6, 2);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 to-rem(24px);
+  overflow: hidden;
+
+  @include media-breakpoint-up(md) {
+    @include spanColumns(4);
+
+    padding-bottom: to-rem(24px);
+  }
+
+  &_Title {
+    @include headerDesktopSm;
+
+    margin-top: to-rem(16px);
+    margin-bottom: 0;
+    text-align: center;
+
+    &__light {
+      color: $white;
+    }
+  }
+
+  &_Text {
+    @include body5;
+
+    margin-top: to-rem(16px);
+    text-align: center;
+
+    &__light {
+      color: $white;
+
+      a {
+        color: $link-color-on-dark;
+      }
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+}

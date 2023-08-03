@@ -1,0 +1,15 @@
+@use "../styles/mixins" as *;
+@use "../styles/spacing" as s;
+
+$styled-link-margin-bottom: s.$p-margin-bottom;
+$multiple-styled-links-margin-bottom: s.$spacing-x-small;
+
+.styledLink:not(:last-child) {
+  margin-bottom: to-rem($styled-link-margin-bottom);
+}
+
+.styledLink + .styledLink {
+  margin-top: to-rem(
+    -$styled-link-margin-bottom + $multiple-styled-links-margin-bottom
+  );
+}

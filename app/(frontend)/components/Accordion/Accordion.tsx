@@ -34,7 +34,7 @@ export default function Accordion({
           </h2>
         )}
         <div className={styles.items}>
-          {items.map((item) => <AccordionItem {...item} />)}
+          {items.map((item) => <AccordionItem {...item} key={item._key} />)}
         </div>
       </div>
     </section>

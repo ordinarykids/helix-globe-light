@@ -14,37 +14,34 @@ $inner-padding-h: 42px;
 }
 
 .inner {
-  padding: to-rem(40) 24px;
-  transform: translateY(to-rem(-40));
+  @include dropShadow;
+
+  padding: to-rem(40px) 24px;
+  transform: translateY(to-rem(-40px));
   background-color: $white;
-  box-shadow: 5px 15px 46px rgba(0 0 0 / 15%);
 
   @include media-breakpoint-up(md) {
     margin-right: -$inner-padding-h;
     margin-left: -$inner-padding-h;
-    padding: to-rem(64) $inner-padding-h;
-    transform: translateY(to-rem(-64));
+    padding: to-rem(64px) $inner-padding-h;
+    transform: translateY(to-rem(-64px));
   }
 }
 
 .header {
-  @include headerMobileMd;
+  @include pageSectionHeader;
 
-  margin-bottom: to-rem(40);
+  margin-bottom: to-rem($page-section-intro-margin-bottom);
   text-align: center;
-
-  @include media-breakpoint-up(md) {
-    @include headerDesktopMd;
-  }
 }
 
 .ctas {
   @include grid;
 
-  row-gap: to-rem(64);
+  row-gap: to-rem(64px);
 
   @include media-breakpoint-up(sm) {
-    row-gap: to-rem(80);
+    row-gap: to-rem(80px);
   }
 }
 
@@ -58,7 +55,7 @@ $inner-padding-h: 42px;
   @include media-breakpoint-up(md) {
     @include spanColumns(4);
 
-    padding-bottom: to-rem(40);
+    padding-bottom: to-rem(40px);
   }
 
   &_Image {
@@ -69,7 +66,7 @@ $inner-padding-h: 42px;
   &_Title {
     @include headerMobileSm;
 
-    margin-top: to-rem(24);
+    margin-top: to-rem(24px);
     margin-bottom: 0;
     text-align: center;
 
@@ -79,6 +76,6 @@ $inner-padding-h: 42px;
   }
 
   &_Button {
-    margin-top: to-rem(24);
+    margin-top: to-rem(24px);
   }
 }

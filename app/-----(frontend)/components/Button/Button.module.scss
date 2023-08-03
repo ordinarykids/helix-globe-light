@@ -1,0 +1,65 @@
+@use "../../styles/typography" as *;
+@use "../../styles/colors" as *;
+
+.Button {
+  border-radius: 3px;
+  text-align: center;
+
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+.text {
+  @include body6;
+
+  color: #fff;
+}
+
+.dark {
+  background-color: $darkblue-300;
+}
+
+.light {
+  background-color: #fff;
+
+  .text {
+    color: $darkblue-300;
+  }
+}
+
+.outline {
+  border: 2px solid $darkblue-300;
+  background-color: transparent;
+
+  .text {
+    color: $darkblue-300;
+  }
+
+  &.light {
+    border: 2px solid #fff;
+
+    .text {
+      color: #fff;
+    }
+  }
+}
+
+.large {
+  display: block;
+  width: 280px;
+  max-width: 100%;
+  padding: 16px to-rem(16);
+}
+
+.small {
+  padding: 8px to-rem(16);
+}
+
+.center {
+  margin-right: auto;
+  margin-left: auto;
+}

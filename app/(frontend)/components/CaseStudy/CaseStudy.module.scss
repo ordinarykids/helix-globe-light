@@ -1,0 +1,67 @@
+@use "../../styles/typography" as *;
+@use "../../styles/colors" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/spacing" as s;
+
+.navWrap {
+  padding-top: to-rem(26px);
+  padding-bottom: to-rem(26px);
+  background-color: $white;
+}
+
+.navContainer {
+  @include container;
+}
+
+.navInner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: $grid-column-gap;
+  row-gap: to-rem(s.$spacing-medium);
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 70px;
+}
+
+.section {
+  @include pageSectionWrap;
+
+  background-color: $coolgray-300;
+
+  &:nth-child(even) {
+    background-color: $coolgray-500;
+  }
+
+  &_Intro {
+    @include containerGrid;
+
+    margin-bottom: to-rem(s.$page-section-intro-margin-bottom);
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &_Eyebrow {
+    @include columns(1, 7, md);
+    @include body2;
+
+    margin-bottom: to-rem(s.$page-section-title-margin-bottom);
+    text-transform: uppercase;
+  }
+
+  &_Header {
+    @include columns(1, 10, md);
+    @include pageSectionHeader;
+
+    white-space: pre-wrap;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}

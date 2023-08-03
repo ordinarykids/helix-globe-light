@@ -4,15 +4,10 @@
 @use "../../styles/typography" as *;
 
 .wrap {
-  padding-top: to-rem(40);
-  padding-bottom: to-rem(40);
+  @include pageSectionWrap;
+
   background-color: $darkblue-100;
   background-image: url("../../../../public/globe_background.svg");
-
-  @include media-breakpoint-up(md) {
-    padding-top: to-rem(64);
-    padding-bottom: to-rem(64);
-  }
 }
 
 .container {
@@ -28,14 +23,14 @@
 .header {
   @include h3;
 
-  margin-bottom: to-rem(16);
+  margin-bottom: to-rem(s.$page-section-title-margin-bottom);
   color: $white;
 }
 
 .subheader {
   @include body5;
 
-  margin-bottom: to-rem(40);
+  margin-bottom: to-rem(s.$page-section-intro-margin-bottom);
   color: $white;
 }
 

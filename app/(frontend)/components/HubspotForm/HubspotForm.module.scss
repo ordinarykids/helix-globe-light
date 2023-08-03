@@ -1,0 +1,302 @@
+@use "../../styles/colors" as *;
+@use "../../styles/misc" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/typography" as *;
+@use "../../styles/spacing";
+
+$input-h-padding: 16px;
+
+.wrap {
+  @include pageSectionWrap;
+
+  background-color: $darkblue-300;
+  color: $white;
+}
+
+.container {
+  @include containerGrid;
+}
+
+.intro,
+.hsFormWrap {
+  @include pageSectionColumns;
+}
+
+.intro {
+  margin-bottom: to-rem(spacing.$page-section-intro-margin-bottom);
+  text-align: center;
+
+  a {
+    color: $link-color-on-dark;
+  }
+}
+
+.title {
+  @include pageSectionHeader;
+
+  color: $white;
+}
+
+.textWrap {
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.hsFormWrap {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $white;
+  }
+
+  h1,
+  h2 {
+    @include pageSectionHeader;
+  }
+
+  a {
+    color: $link-color-on-dark;
+  }
+
+  fieldset {
+    max-width: 100% !important;
+  }
+
+  label {
+    @include body7;
+
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+    color: $white;
+    text-align: left;
+  }
+
+  :global(.hs-input),
+  :global(.hs-fieldtype-checkbox) label,
+  :global(.hs-form-checkbox) label,
+  :global(.hs-form-booleancheckbox) label,
+  :global(.hs-form-radio) label,
+  :global(.hs-richtext),
+  :global(.hs-field-desc) {
+    @include body5;
+  }
+
+  :global(.hs-form-required) {
+    color: $white;
+  }
+
+  :global(.hs-form-field),
+  :global(.hs-richtext),
+  :global(.hs_error_rollup) {
+    margin-bottom: to-rem(40px);
+
+    @include media-breakpoint-down(sm) {
+      margin-bottom: to-rem(24px);
+    }
+  }
+
+  :global(.hs-fieldtype-booleancheckbox),
+  :global(.hs-fieldtype-checkbox),
+  :global(.hs-fieldtype-radio) {
+    ul {
+      @include listReset;
+
+      margin-top: 0;
+    }
+
+    legend {
+      margin-bottom: to-rem(24px);
+    }
+  }
+
+  :global(.hs-form-booleancheckbox-display),
+  :global(.hs-form-checkbox-display),
+  :global(.hs-form-radio-display) {
+    display: inline-flex;
+    width: auto;
+    cursor: pointer;
+
+    input {
+      flex-shrink: 0;
+    }
+
+    span {
+      margin-top: -1px;
+      text-indent: 24px;
+    }
+  }
+
+  :global(.hs-input) {
+    padding: 8px $input-h-padding;
+    border: 0;
+    border-radius: 4px;
+    background-color: $white;
+    color: $body-text-color;
+  }
+
+  :global(.hs-input:not(.invalid)[data-filled="true"]),
+  :global(.hs-dateinput .hs-input:not(.invalid, [value=""])) {
+    background-color: $darkblue-700;
+    box-shadow: 0 0 0 2px $darkblue-100;
+  }
+
+  :global(.hs-input):active,
+  :global(.hs-input):focus {
+    border: 0;
+    outline: none;
+    box-shadow: 0 0 0 2px $darkblue-100;
+  }
+
+  textarea:global(.hs-input) {
+    min-height: 160px;
+    padding: 16px 24px;
+    resize: none;
+  }
+
+  select:global(.hs-input) {
+    background-image: url("/selectCarat.svg");
+    background-repeat: no-repeat;
+    background-position: right $input-h-padding center;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    &::-ms-expand {
+      display: none;
+    }
+  }
+
+  :global(.hs-input[type="checkbox"]) {
+    @include checkbox;
+
+    &:checked {
+      @include checkboxChecked;
+    }
+  }
+
+  :global(.hs-input[type="radio"]) {
+    @include radio;
+
+    &:checked {
+      @include radioChecked;
+    }
+  }
+
+  select:global(.is-placeholder) {
+    color: $darkgray-100;
+  }
+
+  fieldset:global(.form-columns-1),
+  fieldset:global(.form-columns-2),
+  fieldset:global(.form-columns-3) {
+    @include media-breakpoint-up(sm) {
+      max-width: none !important;
+      margin-right: -(spacing.$grid-column-gap-md);
+    }
+
+    @include media-breakpoint-up(md) {
+      margin-right: -(spacing.$grid-column-gap);
+    }
+
+    :global(.hs-form-field) {
+      @include media-breakpoint-down(sm) {
+        width: 100% !important;
+      }
+    }
+
+    :global(.input),
+    :global(ul.hs-error-msgs) {
+      margin-right: spacing.$grid-column-gap !important;
+
+      @include media-breakpoint-down(md) {
+        margin-right: spacing.$grid-column-gap-md !important;
+      }
+
+      @include media-breakpoint-down(sm) {
+        margin-right: 0 !important;
+      }
+    }
+  }
+
+  :global(.hs-input.invalid.error) {
+    border: 0;
+    box-shadow: 0 0 0 2px $red-300;
+  }
+
+  :global(ul.hs-error-msgs) {
+    @include listReset;
+    @include body7;
+
+    display: flex;
+    flex-direction: column;
+    margin-top: to-rem(4px);
+    padding: 8px $input-h-padding 16px;
+    border-radius: 4px;
+    background-color: $red-800;
+
+    li {
+      label {
+        padding-left: 24px;
+        background-image: url("/caution.svg");
+        background-repeat: no-repeat;
+        background-position: left center;
+        color: $red-300;
+        text-align: left;
+      }
+
+      &:last-child {
+        label {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  :global(div.hs-submit) {
+    &,
+    * {
+      text-align: left;
+    }
+
+    input {
+      @include buttonReset;
+      @include body6;
+
+      display: inline-block;
+      padding: to-rem(16px) 96px;
+      border: 2px solid $white;
+      border-radius: 3px;
+      background-color: transparent;
+      color: $white;
+      text-align: center;
+
+      &:hover,
+      &:focus {
+        background-color: $white;
+        color: $darkblue-300;
+      }
+
+      @include media-breakpoint-down(md) {
+        width: 100%;
+      }
+    }
+  }
+
+  /* stylelint-disable */
+  select:global(.hs-input),
+  textarea:global(.hs-input),
+  :global(.hs-input[type]:not(
+    [type='button']):not(
+      [type='checkbox']):not(
+        [type='radio']):not(
+          [type='reset']):not(
+            [type='submit'])) {
+    width: 100% !important;
+  }
+  /* stylelint-enable */
+}

@@ -1,0 +1,116 @@
+@use "../../styles/colors" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/spacing" as *;
+@use "../../styles/typography" as *;
+
+.wrap {
+  padding-top: to-rem(40);
+  padding-bottom: to-rem(40);
+  background-color: $coolgray-300;
+  overflow: hidden;
+  word-wrap: break-word;
+
+  @include media-breakpoint-up(sm) {
+    padding-top: to-rem(64);
+    padding-bottom: to-rem(64);
+
+    &__simple {
+      padding-top: to-rem(80);
+      padding-bottom: to-rem(80);
+    }
+  }
+}
+
+.container {
+  @include containerGrid;
+
+  align-items: center;
+  row-gap: to-rem(40);
+
+  @include media-breakpoint-up(sm) {
+    row-gap: to-rem(64);
+  }
+}
+
+.simpleHeader {
+  @include columns(1, -1);
+
+  text-align: center;
+
+  @include media-breakpoint-up(md) {
+    @include spanColumns(10, 2);
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include spanColumns(8, 3);
+  }
+}
+
+.textWrap {
+  @include columns(1, -1);
+
+  @include media-breakpoint-up(lg) {
+    @include spanColumns(7);
+
+    grid-row: 1;
+  }
+
+  @include media-breakpoint-up(xl) {
+    @include spanColumns(6);
+  }
+}
+
+.eyebrow {
+  @include body2;
+
+  margin-bottom: to-rem(8);
+  text-transform: uppercase;
+}
+
+.header {
+  @include headerMobileLg;
+
+  margin-bottom: to-rem(24);
+  font-size: 38px;
+  font-size: to-rem(38);
+
+  @include media-breakpoint-up(sm) {
+    @include headerDesktopLg;
+  }
+
+  &__simple {
+    margin-bottom: 0;
+  }
+}
+
+.subheader {
+  @include body1;
+
+  margin-bottom: to-rem(32);
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.imageWrap {
+  @include columns(1, -1);
+
+  text-align: center;
+
+  @include media-breakpoint-up(lg) {
+    @include spanColumns(5);
+  }
+
+  @include media-breakpoint-up(xl) {
+    @include spanColumns(6);
+
+    padding: to-rem(24) to-rem(40);
+  }
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}

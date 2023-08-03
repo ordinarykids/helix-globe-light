@@ -1,14 +1,19 @@
 import { groq } from 'next-sanity'
 import { AccordionField } from 'app/(frontend)/components/Accordion/Accordion'
+import { CaseStudyField } from 'app/(frontend)/components/CaseStudy/CaseStudy'
+import { FourPointChartField } from '@/app/(frontend)/components/FourPointChart/FourPointChart'
 import { HomePageHeroType } from '@/app/(frontend)/components/HomePageHero/HomePageHero'
 import { HomeHeroThreeUpType } from '@/app/(frontend)/components/HomeHeroThreeUp/HomeHeroThreeUp'
+import { HubspotFormField } from '@/app/(frontend)/components/HubspotForm/HubspotForm'
 import { GeometricCTAsProps } from 'app/(frontend)/components/GeometricCTAs/GeometricCTAs'
 import { PageHeroType } from '@/app/(frontend)/components/PageHero/PageHero'
 import { PartnerLogoGridProps } from '@/app/(frontend)/components/PartnerLogoGrid/PartnerLogoGrid'
 import { PageSectionProps } from 'app/(frontend)/components/PageSection/PageSection'
 import { QuoteField } from 'app/(frontend)/components/Quote/Quote'
+import { ThreeStageProcessField } from 'app/(frontend)/components/ThreeStageProcess/ThreeStageProcess'
 import { sanityFetch } from '../sanityClient'
 import imgReference from '../partials/imgReference'
+import teaser from '../partials/teaser'
 import link from '../partials/link'
 
 interface Key {
@@ -34,10 +39,14 @@ type PageByPath = {
   pageHero: PageHeroType | null,
   pageBuilder: (
     | AccordionField
+    | CaseStudyField
+    | FourPointChartField
     | GeometricCTAsField
+    | HubspotFormField
     | PartnerLogoGridField
     | PageSectionField
     | QuoteField
+    | ThreeStageProcessField
   )[] | null
 }
 
@@ -67,6 +76,40 @@ const fetchPageByPath = async (pagePath: string) => {
     },
     pageBuilder[] {
       ...,
+      _type == 'caseStudy' => {
+        ...,
+        sections[] {
+          ...,
+          subsections[] {
+            ...,
+            innerBlocks[] {
+              ...,
+              _type == 'caseStudyTwoUp' => {
+                ...,
+                'image': image.asset->${imgReference},
+                logos[] {
+                  ...,
+                  'image': image.asset->${imgReference},
+                },
+              },
+              _type == 'caseStudyTwoUpStats' => {
+                ...,
+                columns {
+                  ...,
+                  col1[] {
+                    ...,
+                    'image': image.asset->${imgReference},
+                  },
+                  col2[] {
+                    ...,
+                    'image': image.asset->${imgReference},
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
       _type == 'geometricCTAs' => {
         ...,
         ctas[] {
@@ -86,6 +129,17 @@ const fetchPageByPath = async (pagePath: string) => {
         ...,
         innerBlocks[] {
           ...,
+          _type == 'pageSectionImage' => {
+            ...,
+            'image': image.asset->${imgReference},
+          },
+          _type == 'threeUpCardCta' => {
+            ...,
+            ctas[] {
+              _key,
+              ...@->${teaser},
+            },
+          },
           _type == 'twoUp' => {
             ...,
             'image': image.asset->${imgReference},

@@ -1,28 +1,20 @@
 import cx from 'classnames'
-import React from 'react'
-import Image from 'next/image'
 import type { PortableTextBlock } from '@portabletext/types'
 import { PortableText } from '@portabletext/react'
-import type ImageField from 'app/(frontend)/types/image'
 import type LinkField from 'app/(frontend)/types/link'
+import InteractiveSphere from 'app/(frontend)/components/InteractiveSphere'
 import Button from '../Button/Button'
 import styles from './HomePageHero.module.scss'
-
-//import  InteractiveSphere  from '../InteractiveSphere4/InteractiveSphere'
 
 export type HomePageHeroType = {
     header?: string | null,
     subheader?: PortableTextBlock[],
-    media?: string | null,
     buttonText?: string | null,
     buttonLink?: LinkField,
-    image: ImageField,
   }
 
-
-
 export default function HomePageHero({
-  header, subheader, media, buttonText, buttonLink, image,
+  header, subheader, buttonText, buttonLink,
 }: HomePageHeroType) {
   return (
     <div className={cx(styles.wrap)}>
@@ -44,7 +36,7 @@ export default function HomePageHero({
           )}
         </div>
         <div className={cx(styles.heroRight)}>
-         
+          <InteractiveSphere />
         </div>
       </div>
     </div>

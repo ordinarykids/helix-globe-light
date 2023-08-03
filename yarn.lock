@@ -7059,6 +7059,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babel-plugin-syntax-jsx@npm:6.18.0":
+  version: 6.18.0
+  resolution: "babel-plugin-syntax-jsx@npm:6.18.0"
+  checksum: 0c7ce5b81d6cfc01a7dd7a76a9a8f090ee02ba5c890310f51217ef1a7e6163fb7848994bbc14fd560117892e82240df9c7157ad0764da67ca5f2afafb73a7d27
+  languageName: node
+  linkType: hard
+
 "babel-plugin-transform-import-meta@npm:^2.2.0":
   version: 2.2.0
   resolution: "babel-plugin-transform-import-meta@npm:2.2.0"
@@ -7078,6 +7085,28 @@ __metadata:
     "@babel/runtime": ^7.13.9
     "@types/babel__core": ^7.1.12
   checksum: 781b4f7d9e7497e869d87749a6d0a13a882c19995e3d97262622d6bfaab0d6da1a182f8440facab8316f1360070bbd7ca6898b1c70400645d1f52990f960b801
+  languageName: node
+  linkType: hard
+
+"babel-runtime@npm:6.26.0, babel-runtime@npm:^6.26.0":
+  version: 6.26.0
+  resolution: "babel-runtime@npm:6.26.0"
+  dependencies:
+    core-js: ^2.4.0
+    regenerator-runtime: ^0.11.0
+  checksum: 8aeade94665e67a73c1ccc10f6fd42ba0c689b980032b70929de7a6d9a12eb87ef51902733f8fefede35afea7a5c3ef7e916a64d503446c1eedc9e3284bd3d50
+  languageName: node
+  linkType: hard
+
+"babel-types@npm:6.26.0":
+  version: 6.26.0
+  resolution: "babel-types@npm:6.26.0"
+  dependencies:
+    babel-runtime: ^6.26.0
+    esutils: ^2.0.2
+    lodash: ^4.17.4
+    to-fast-properties: ^1.0.3
+  checksum: d16b0fa86e9b0e4c2623be81d0a35679faff24dd2e43cde4ca58baf49f3e39415a011a889e6c2259ff09e1228e4c3a3db6449a62de59e80152fe1ce7398fde76
   languageName: node
   linkType: hard
 
@@ -8107,6 +8136,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"convert-source-map@npm:1.5.1":
+  version: 1.5.1
+  resolution: "convert-source-map@npm:1.5.1"
+  checksum: 56d0abd1f4508fa929df314b57599c154e8f4b38e95a948f9a72aa1efca72801028f39610a8146c0fc09723edeed194d7a5774d427ded4217593604f6c165943
+  languageName: node
+  linkType: hard
+
 "convert-source-map@npm:^1.1.0, convert-source-map@npm:^1.5.0, convert-source-map@npm:^1.6.0, convert-source-map@npm:^1.7.0":
   version: 1.9.0
   resolution: "convert-source-map@npm:1.9.0"
@@ -8157,6 +8193,13 @@ __metadata:
   version: 3.31.1
   resolution: "core-js-pure@npm:3.31.1"
   checksum: 93c3dd28471755cb81ec4828f5617bd32a7c682295d88671534a6733a0d41dae9e28f8f8000ddd1f1e597a3bec4602db5f906a03c9ba1a360534f7ae2519db7c
+  languageName: node
+  linkType: hard
+
+"core-js@npm:^2.4.0":
+  version: 2.6.12
+  resolution: "core-js@npm:2.6.12"
+  checksum: 44fa9934a85f8c78d61e0c8b7b22436330471ffe59ec5076fe7f324d6e8cf7f824b14b1c81ca73608b13bdb0fef035bd820989bf059767ad6fa13123bb8bd016
   languageName: node
   linkType: hard
 
@@ -11355,6 +11398,7 @@ __metadata:
     next-sanity: 5.1.1
     react: 18.2.0
     react-dom: 18.2.0
+    react-hubspot-form: ^1.3.7
     react-is: ^18.2.0
     react-player: ^2.12.0
     react-remove-scroll: ^2.5.6
@@ -15486,6 +15530,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-hubspot-form@npm:^1.3.7":
+  version: 1.3.7
+  resolution: "react-hubspot-form@npm:1.3.7"
+  dependencies:
+    styled-jsx: ^2.2.4
+  checksum: 584bef75faa8d28ec7c02be562ffecd586daacec57b6d9340ff3e49585e4e6af863b970a7672d925e7d20256dab05873fb0e07929a313a53123c1d2ba292b38d
+  languageName: node
+  linkType: hard
+
 "react-inspector@npm:^6.0.0":
   version: 6.0.2
   resolution: "react-inspector@npm:6.0.2"
@@ -15966,6 +16019,13 @@ __metadata:
   version: 1.4.2
   resolution: "regenerate@npm:1.4.2"
   checksum: 3317a09b2f802da8db09aa276e469b57a6c0dd818347e05b8862959c6193408242f150db5de83c12c3fa99091ad95fb42a6db2c3329bfaa12a0ea4cbbeb30cb0
+  languageName: node
+  linkType: hard
+
+"regenerator-runtime@npm:^0.11.0":
+  version: 0.11.1
+  resolution: "regenerator-runtime@npm:0.11.1"
+  checksum: 3c97bd2c7b2b3247e6f8e2147a002eb78c995323732dad5dc70fac8d8d0b758d0295e7015b90d3d444446ae77cbd24b9f9123ec3a77018e81d8999818301b4f4
   languageName: node
   linkType: hard
 
@@ -17223,6 +17283,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"string-hash@npm:1.1.3":
+  version: 1.1.3
+  resolution: "string-hash@npm:1.1.3"
+  checksum: 104b8667a5e0dc71bfcd29fee09cb88c6102e27bfb07c55f95535d90587d016731d52299380052e514266f4028a7a5172e0d9ac58e2f8f5001be61dc77c0754d
+  languageName: node
+  linkType: hard
+
 "string-width-cjs@npm:string-width@^4.2.0, string-width@npm:^1.0.2 || 2 || 3 || 4, string-width@npm:^4.0.0, string-width@npm:^4.1.0, string-width@npm:^4.2.0, string-width@npm:^4.2.3":
   version: 4.2.3
   resolution: "string-width@npm:4.2.3"
@@ -17463,6 +17530,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"styled-jsx@npm:^2.2.4":
+  version: 2.2.7
+  resolution: "styled-jsx@npm:2.2.7"
+  dependencies:
+    babel-plugin-syntax-jsx: 6.18.0
+    babel-runtime: 6.26.0
+    babel-types: 6.26.0
+    convert-source-map: 1.5.1
+    source-map: 0.6.1
+    string-hash: 1.1.3
+    stylis: 3.5.1
+    stylis-rule-sheet: 0.0.10
+  peerDependencies:
+    react: 15.x.x || 16.x.x
+  checksum: 2a076240308835db354499c05e9341912cfa9d527231e6cd7fe42f79c070fad41fab3e118997f8a3b1281650331a4e8a69c46b65945c9959f9820158a38d0679
+  languageName: node
+  linkType: hard
+
 "stylelint-config-recommended-scss@npm:^9.0.0":
   version: 9.0.1
   resolution: "stylelint-config-recommended-scss@npm:9.0.1"
@@ -17601,6 +17686,22 @@ __metadata:
   bin:
     stylelint: bin/stylelint.mjs
   checksum: 1a7dc0385bddc604f6633340dd3eb58dfc8860e677576d7ad688a94064140d73fd70ea21038994a9f8884457098ee297ce625bbddd9477cde35faa4bf7aff848
+  languageName: node
+  linkType: hard
+
+"stylis-rule-sheet@npm:0.0.10":
+  version: 0.0.10
+  resolution: "stylis-rule-sheet@npm:0.0.10"
+  peerDependencies:
+    stylis: ^3.5.0
+  checksum: 97ad016c64ecce8d4b2c2c1c3cf3260de3c0e2b151e78f90ded6cc1bfcca536625a77277af16a9c8a241236a9e4fd5b70d88dfa32e9b48afaddb8f102a95582d
+  languageName: node
+  linkType: hard
+
+"stylis@npm:3.5.1":
+  version: 3.5.1
+  resolution: "stylis@npm:3.5.1"
+  checksum: e85ea0d5ab335c122595305bbf0532b7debbefe48f606ac51633fe5083e959e9ba0b643243d9dc708bb24ff9e877066af2fd293dc72ec93544253bb6899a24f9
   languageName: node
   linkType: hard
 
@@ -17985,6 +18086,13 @@ __metadata:
   version: 1.0.5
   resolution: "tmpl@npm:1.0.5"
   checksum: cd922d9b853c00fe414c5a774817be65b058d54a2d01ebb415840960406c669a0fc632f66df885e24cb022ec812739199ccbdb8d1164c3e513f85bfca5ab2873
+  languageName: node
+  linkType: hard
+
+"to-fast-properties@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "to-fast-properties@npm:1.0.3"
+  checksum: bd0abb58c4722851df63419de3f6d901d5118f0440d3f71293ed776dd363f2657edaaf2dc470e3f6b7b48eb84aa411193b60db8a4a552adac30de9516c5cc580
   languageName: node
   linkType: hard
 

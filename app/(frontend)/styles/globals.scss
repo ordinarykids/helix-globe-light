@@ -1,5 +1,7 @@
 @use "./colors" as *;
+@use "./mixins" as *;
 @use "./typography" as *;
+@use "./spacing";
 
 * {
   box-sizing: border-box;
@@ -44,6 +46,7 @@ h6 {
 
 p {
   margin-top: 0;
+  margin-bottom: to-rem(spacing.$p-margin-bottom);
 }
 
 a {

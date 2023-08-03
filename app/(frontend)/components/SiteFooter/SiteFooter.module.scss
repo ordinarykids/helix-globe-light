@@ -1,0 +1,153 @@
+@use "../../styles/colors" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/typography" as *;
+
+.footer {
+  background-color: $white;
+}
+
+.main {
+  padding-top: to-rem(64px);
+  padding-bottom: to-rem(24px);
+
+  @include media-breakpoint-down(sm) {
+    padding-bottom: to-rem(8px);
+  }
+
+  &_Container {
+    @include containerGrid;
+  }
+}
+
+.content {
+  @include spanColumns(4);
+}
+
+.brandLink {
+  display: inline-block;
+  vertical-align: top;
+
+  svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.tagline {
+  @include body8;
+
+  width: 157px;
+  max-width: 100%;
+  margin-top: to-rem(8px);
+  margin-bottom: 0;
+  line-height: 1rem;
+}
+
+.contactWrap,
+.copyrightWrap {
+  margin-top: to-rem(32px);
+}
+
+.socialLinks {
+  display: flex;
+  column-gap: $grid-column-gap;
+}
+
+.socialLink {
+  svg {
+    display: block;
+  }
+}
+
+.contact {
+  margin-top: to-rem(8px);
+
+  &_Intro {
+    @include body7;
+
+    margin-bottom: to-rem(8px);
+  }
+
+  &_Info {
+    @include body8;
+
+    margin-bottom: 0;
+    white-space: pre-wrap;
+  }
+}
+
+.copyright,
+.copyrightDescription {
+  @include body12;
+
+  margin-bottom: 0;
+  color: $darkgray-300;
+}
+
+.copyrightDescription {
+  margin-top: to-rem(16px);
+}
+
+.nav {
+  @include spanColumns(8);
+
+  @include media-breakpoint-down(md) {
+    @include spanColumns(4);
+  }
+
+  @include media-breakpoint-down(sm) {
+    margin-top: to-rem(24px);
+  }
+}
+
+.legal {
+  padding-top: to-rem(24px);
+  padding-bottom: to-rem(24px);
+  background-color: $darkgray-100;
+  color: $white;
+
+  &_Container {
+    @include container;
+  }
+
+  &_Inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    column-gap: $grid-column-gap;
+    row-gap: 16px;
+
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+    }
+  }
+}
+
+.legalLinks,
+.certifications {
+  @include listReset;
+
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: to-rem(16px);
+  row-gap: 8px;
+}
+
+.legalLinks {
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+  }
+}
+
+.legalLink,
+.certification {
+  @include body7;
+}
+
+.legalLink {
+  &,
+  &:visited {
+    color: inherit;
+  }
+}

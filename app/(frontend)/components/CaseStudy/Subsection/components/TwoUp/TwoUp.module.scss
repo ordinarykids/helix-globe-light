@@ -1,0 +1,270 @@
+@use "../../../../../styles/typography" as *;
+@use "../../../../../styles/colors" as *;
+@use "../../../../../styles/mixins" as *;
+@use "../../../../../styles/spacing" as s;
+
+.cardContainer {
+  @include dropShadow;
+
+  padding-top: to-rem(s.$spacing-x-large);
+  padding-bottom: to-rem(s.$spacing-x-large);
+
+  @include media-breakpoint-down(md) {
+    padding: to-rem(s.$spacing-large);
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding-right: to-rem(s.$spacing-standard);
+    padding-left: to-rem(s.$spacing-standard);
+  }
+
+  @include media-breakpoint-up(md) {
+    margin-right: to-rem(s.$spacing-large);
+    margin-left: to-rem(s.$spacing-large);
+  }
+}
+
+.container {
+  @include grid;
+
+  row-gap: to-rem(s.$spacing-large);
+
+  &:not(:first-child) {
+    padding-top: to-rem(s.$spacing-large);
+  }
+
+  &:not(:last-child) {
+    padding-bottom: to-rem(s.$spacing-large);
+  }
+
+  @include media-breakpoint-down(sm) {
+    row-gap: to-rem(s.$spacing-standard);
+
+    &:not(:first-child) {
+      padding-top: to-rem(s.$spacing-standard);
+    }
+
+    &:not(:last-child) {
+      padding-bottom: to-rem(s.$spacing-standard);
+    }
+  }
+
+  &__inCard {
+    align-items: center;
+  }
+}
+
+.visuals__left {
+  @include columns(1, 8);
+}
+
+.textWrap__imgright {
+  @include columns(1, 6);
+}
+
+.visuals__left,
+.textWrap__imgright {
+  @include media-breakpoint-up(md) {
+    padding-left: to-rem(s.$case-study-subsection-padding);
+
+    &.visuals__inCard {
+      @include columns(1, 7);
+    }
+
+    &.textWrap__inCard {
+      margin-right: -(s.$spacing-medium);
+    }
+  }
+}
+
+.visuals__right {
+  @include columns(6, -1);
+}
+
+.textWrap__imgleft {
+  @include columns(8, -1);
+}
+
+.visuals__right,
+.textWrap__imgleft {
+  @include media-breakpoint-up(md) {
+    padding-right: to-rem(s.$case-study-subsection-padding);
+
+    &.visuals__inCard {
+      @include columns(7, -1);
+    }
+
+    &.textWrap__inCard {
+      margin-left: -(s.$spacing-medium);
+    }
+  }
+}
+
+.textWrap,
+.text {
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.title {
+  @include headerDesktopSm;
+
+  margin-bottom: to-rem(16px);
+}
+
+.text {
+  @include body5;
+
+  :global(.styledLink:not(:last-child)) {
+    margin-bottom: to-rem(s.$p-margin-bottom);
+  }
+}
+
+.visuals,
+.textWrap {
+  @include media-breakpoint-up(md) {
+    grid-row: 1;
+  }
+
+  @include media-breakpoint-down(md) {
+    @include columns(2, 8);
+  }
+
+  &__inCard {
+    @include media-breakpoint-down(md) {
+      @include columns(1, -1);
+    }
+  }
+}
+
+.textWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: to-rem(s.$spacing-large);
+
+  @include media-breakpoint-down(sm) {
+    row-gap: to-rem(s.$spacing-standard);
+  }
+
+  &__inCard {
+    @include media-breakpoint-down(md) {
+      order: 1;
+    }
+  }
+}
+
+.logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  @include media-breakpoint-down(md) {
+    &:not(.logos__inCard) {
+      order: 1;
+    }
+  }
+}
+
+.logoWrap {
+  flex: 0 0 50%;
+  text-align: center;
+}
+
+.logoInner {
+  display: block;
+  padding: 10px;
+}
+
+.logo {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.visuals {
+  > :not(:last-child) {
+    margin-bottom: to-rem(s.$spacing-large);
+
+    @include media-breakpoint-down(sm) {
+      margin-bottom: to-rem(s.$spacing-standard);
+    }
+  }
+}
+
+.img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.iconCard {
+  @include dropShadow;
+
+  @include media-breakpoint-up(md) {
+    max-width: 474px;
+    margin: 0 auto;
+  }
+
+  &_Row {
+    display: flex;
+    padding: to-rem(s.$spacing-standard) to-rem(s.$spacing-large);
+    column-gap: s.$spacing-standard;
+
+    @include media-breakpoint-up(sm) {
+      align-items: center;
+    }
+
+    @include media-breakpoint-down(md) {
+      padding-right: to-rem(s.$spacing-standard);
+      padding-left: to-rem(s.$spacing-standard);
+    }
+
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+      row-gap: s.$spacing-standard;
+    }
+
+    &:nth-child(even) {
+      background-color: $coolgray-300;
+    }
+  }
+
+  &_Icon {
+    flex-shrink: 0;
+    width: 132px;
+
+    @include media-breakpoint-down(lg) {
+      width: 88px;
+    }
+
+    @include media-breakpoint-down(md) {
+      width: 104px;
+    }
+
+    @include media-breakpoint-down(sm) {
+      width: 107px;
+    }
+
+    .iconCard_Row:nth-child(odd) & {
+      @include media-breakpoint-up(sm) {
+        order: 1;
+      }
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &_Text {
+    @include body3;
+
+    margin-bottom: 0;
+    color: $darkblue-300;
+  }
+}

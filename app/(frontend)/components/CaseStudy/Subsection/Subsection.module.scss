@@ -1,0 +1,57 @@
+@use "../../../styles/typography" as *;
+@use "../../../styles/colors" as *;
+@use "../../../styles/mixins" as *;
+@use "../../../styles/spacing" as s;
+
+.subsection {
+  &:not(:last-child) {
+    margin-bottom: to-rem(24px);
+  }
+}
+
+.container {
+  @include container;
+}
+
+.subsectionInner {
+  padding-top: to-rem(s.$case-study-subsection-padding);
+  padding-bottom: to-rem(s.$case-study-subsection-padding);
+  background-color: $white;
+
+  @include media-breakpoint-down(md) {
+    padding-right: to-rem(s.$case-study-subsection-padding);
+    padding-left: to-rem(s.$case-study-subsection-padding);
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding-right: to-rem(s.$case-study-subsection-padding-h-mobile);
+    padding-left: to-rem(s.$case-study-subsection-padding-h-mobile);
+  }
+
+  > *:not(:last-child) {
+    margin-bottom: to-rem(s.$spacing-large);
+  }
+}
+
+.eyebrow {
+  @include media-breakpoint-up(md) {
+    padding-right: to-rem(s.$case-study-subsection-padding);
+    padding-left: to-rem(s.$case-study-subsection-padding);
+  }
+
+  &_Decorator {
+    width: 24px;
+    height: 6px;
+    margin-bottom: to-rem(8px);
+  }
+
+  &_Text {
+    @include body9;
+
+    margin-bottom: 0;
+    color: $darkgray-300;
+    font-weight: 620;
+    letter-spacing: to-rem(0.5px);
+    text-transform: uppercase;
+  }
+}

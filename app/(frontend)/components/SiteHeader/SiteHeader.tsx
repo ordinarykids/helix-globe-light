@@ -1,7 +1,6 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import fetchMainNav from 'app/(frontend)/lib/sanity/fetch/fetchMainNav'
-import logo from 'public/helix_brand_logo.png'
+import BrandLogo from '../svgs/BrandLogo'
 import MainNav from '../MainNav'
 import ParticipantNav from '../ParticipantNav'
 import styles from './SiteHeader.module.scss'
@@ -14,8 +13,8 @@ export default async function SiteHeader() {
       <ParticipantNav />
       <header className={styles.header} id='siteHeader'>
         <div className={styles.container}>
-          <Link href='/'>
-            <Image src={logo} width={123} height={32} alt='Helix brand logo' className={styles.brandImg} />
+          <Link href='/' className={styles.brandLink} aria-label='Helix brand logo'>
+            <BrandLogo />
           </Link>
           <MainNav navData={mainNavData} />
         </div>

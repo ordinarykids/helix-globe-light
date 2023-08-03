@@ -29,10 +29,10 @@
 }
 
 .title {
-  @include headerDesktopMd;
+  @include pageSectionHeader;
 
-  margin-bottom: to-rem(40);
-  padding-top: to-rem(64);
+  margin-bottom: to-rem(spacing.$page-section-intro-margin-bottom);
+  padding-top: to-rem(64px);
 }
 
 .container {
@@ -122,7 +122,7 @@
 .ctaTitle {
   @include headerDesktopSm;
 
-  margin-bottom: to-rem(24);
+  margin-bottom: to-rem(spacing.$page-section-title-margin-bottom);
 }
 
 .content {
@@ -134,7 +134,7 @@
 }
 
 .link {
-  margin-top: to-rem(32);
+  margin-top: to-rem(32px);
 }
 
 .shape {

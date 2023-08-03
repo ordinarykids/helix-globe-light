@@ -1,11 +1,12 @@
 import { PortableText } from '@portabletext/react'
 import type { PortableTextBlock } from '@portabletext/types'
 import Icon from '../../Icon'
-import type { IconType } from '../../Icon/Icon'
+import type { IconType, IconColor } from '../../Icon/Icon'
 import styles from './IconCard.module.scss'
 
 interface IconCardProps {
   icon?: IconType
+  iconColor: IconColor
   header?: string
   subheader?: string
   text?: PortableTextBlock[]
@@ -17,12 +18,12 @@ export interface IconCardField extends IconCardProps {
 }
 
 export default function IconCard({
-  icon, header, subheader, text,
+  icon, iconColor, header, subheader, text,
 }: IconCardProps) {
   return (
     <div className={styles.wrap}>
       {icon && (
-        <Icon icon={icon} />
+        <Icon icon={icon} color={iconColor} />
       )}
       {header && (
         <h3 className={styles.header}>

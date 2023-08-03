@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import cx from 'classnames'
-import ArrowRight from '../svgs/ArrowRight'
+import CaretRight from '../svgs/CaretRight'
 import styles from './StyledLink.module.scss'
 
 export interface StyledLinkProps {
@@ -24,7 +24,7 @@ export default function StyledLink({
   return (
     <Link href={link} className={cx(linkClasses, className)}>
       <span className={styles.text}>{text}</span>
-      <ArrowRight />
+      <CaretRight />
     </Link>
   )
 }

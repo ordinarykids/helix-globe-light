@@ -4,19 +4,19 @@
 @use "../../styles/typography" as *;
 
 .wrap {
-  padding-top: to-rem(40);
-  padding-bottom: to-rem(40);
+  padding-top: to-rem(40px);
+  padding-bottom: to-rem(40px);
   background-color: $coolgray-300;
   overflow: hidden;
   word-wrap: break-word;
 
   @include media-breakpoint-up(sm) {
-    padding-top: to-rem(64);
-    padding-bottom: to-rem(64);
+    padding-top: to-rem(64px);
+    padding-bottom: to-rem(64px);
 
     &__simple {
-      padding-top: to-rem(80);
-      padding-bottom: to-rem(80);
+      padding-top: to-rem(80px);
+      padding-bottom: to-rem(80px);
     }
   }
 }
@@ -25,10 +25,10 @@
   @include containerGrid;
 
   align-items: center;
-  row-gap: to-rem(40);
+  row-gap: to-rem(40px);
 
   @include media-breakpoint-up(sm) {
-    row-gap: to-rem(64);
+    row-gap: to-rem(64px);
   }
 }
 
@@ -63,16 +63,16 @@
 .eyebrow {
   @include body2;
 
-  margin-bottom: to-rem(8);
+  margin-bottom: to-rem(8px);
   text-transform: uppercase;
 }
 
 .header {
   @include headerMobileLg;
 
-  margin-bottom: to-rem(24);
+  margin-bottom: to-rem($page-section-title-margin-bottom);
   font-size: 38px;
-  font-size: to-rem(38);
+  font-size: to-rem(38px);
 
   @include media-breakpoint-up(sm) {
     @include headerDesktopLg;
@@ -86,7 +86,7 @@
 .subheader {
   @include body1;
 
-  margin-bottom: to-rem(32);
+  margin-bottom: to-rem(32px);
 
   > :last-child {
     margin-bottom: 0;
@@ -105,7 +105,7 @@
   @include media-breakpoint-up(xl) {
     @include spanColumns(6);
 
-    padding: to-rem(24) to-rem(40);
+    padding: to-rem(24px) to-rem(40px);
   }
 }
 

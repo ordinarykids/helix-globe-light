@@ -1,8 +1,8 @@
 import { groq } from 'next-sanity'
-import type ImageField from 'app/(frontend)/types/image'
 import type LinkField from 'app/(frontend)/types/link'
+import type TeaserType from 'app/(frontend)/types/teaser'
 import { sanityFetch } from '../sanityClient'
-import imgReference from '../partials/imgReference'
+import teaser from '../partials/teaser'
 import link from '../partials/link'
 
 export type MainNavCTALink = {
@@ -25,12 +25,7 @@ export type MainNavigation = {
             title?: string | null;
             titlelink?: LinkField | null;
           }[];
-          teaser: {
-            _type: string;
-            image: ImageField;
-            slug: string;
-            title?: string | null;
-          } | null;
+          teaser: TeaserType | null;
           hideTeaserDesktop: boolean | null;
           hideTeaserMobile: boolean | null;
         };
@@ -56,12 +51,7 @@ const fetchMainNav = async () => {
             url ${link},
           },
         },
-        teaser->{
-          'image': featuredImage.image.asset->${imgReference},
-          title,
-          _type,
-          "slug": slug.current,
-        },
+        teaser->${teaser},
         hideTeaserDesktop,
         hideTeaserMobile,
         ctaLink {

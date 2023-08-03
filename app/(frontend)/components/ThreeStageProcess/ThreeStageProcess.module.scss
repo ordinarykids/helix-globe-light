@@ -1,0 +1,158 @@
+@use "../../styles/typography" as *;
+@use "../../styles/colors" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/spacing" as s;
+
+$circle-diameter: 54px;
+$line-bottom-margin: 24px;
+
+.wrap {
+  @include pageSectionWrap;
+
+  background-color: $coolgray-300;
+}
+
+.titleWrap {
+  @include containerGrid;
+
+  text-align: center;
+}
+
+.title {
+  @include pageSectionColumns;
+  @include pageSectionHeader;
+
+  margin-bottom: to-rem(s.$page-section-intro-margin-bottom);
+}
+
+.visual {
+  margin-bottom: to-rem(50px);
+
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
+}
+
+.lineGraphic {
+  display: flex;
+  position: relative;
+  align-items: center;
+  height: $circle-diameter;
+  margin-bottom: $line-bottom-margin;
+
+  &_Circles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  &_Container {
+    @include containerGrid;
+
+    height: 100%;
+  }
+
+  &_Line {
+    width: 100%;
+    height: 20px;
+    background-color: $darkblue-500;
+  }
+
+  &_CircleWrap {
+    @include spanColumns(4);
+  }
+
+  &_Circle {
+    width: $circle-diameter;
+    height: $circle-diameter;
+    margin-right: auto;
+    margin-left: auto;
+    border: 16px solid $darkblue-500;
+    border-radius: 50%;
+    background: $white;
+    box-sizing: border-box;
+
+    &__active {
+      border-color: $green-300;
+    }
+  }
+}
+
+.titleGraphic {
+  @include containerGrid;
+
+  align-items: center;
+
+  &_Line {
+    width: 100%;
+    height: 20px;
+    background-color: $darkblue-500;
+  }
+
+  &_TitleWrap {
+    @include spanColumns(4);
+
+    position: relative;
+    text-align: center;
+  }
+
+  &_Title {
+    @include buttonReset;
+    @include headerDesktopSm;
+
+    position: relative;
+    margin: -($circle-diameter + $line-bottom-margin) 20px 0;
+    padding-top: $circle-diameter + $line-bottom-margin;
+    color: $darkblue-400;
+
+    &__active {
+      color: $darkblue-100;
+    }
+
+    &::after {
+      position: absolute;
+      bottom: -16px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      transform: scaleX(0);
+      transform-origin: left;
+      background-color: $green-300;
+      content: "";
+    }
+
+    &__active,
+    &:hover,
+    &:focus {
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    &:hover,
+    &:focus {
+      &::after {
+        transition: transform 0.25s ease-out;
+      }
+    }
+  }
+
+  &_Arrow {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: $grid-column-gap;
+    transform: translate(100%, -50%);
+
+    svg {
+      height: auto;
+    }
+  }
+}
+
+.stages {
+  @include containerGrid;
+
+  align-items: start;
+  row-gap: to-rem(24px);
+}

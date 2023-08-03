@@ -1,0 +1,191 @@
+@use "../../../../../styles/typography" as *;
+@use "../../../../../styles/colors" as *;
+@use "../../../../../styles/mixins" as *;
+@use "../../../../../styles/spacing" as s;
+
+$circle-diameter: 54px;
+$line-bottom-margin: 24px;
+
+.wrap {
+  padding-top: to-rem(s.$spacing-xx-large);
+  padding-bottom: to-rem(s.$spacing-large);
+  overflow: hidden;
+
+  @include media-breakpoint-up(sm) {
+    &:not(:last-child) {
+      padding-bottom: to-rem(s.$spacing-x-large);
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    &:not(:last-child) {
+      padding-bottom: to-rem(s.$spacing-xx-large);
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    padding-top: to-rem(s.$spacing-x-large);
+    padding-bottom: to-rem(s.$spacing-standard);
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding-top: to-rem(s.$spacing-large);
+    padding-bottom: to-rem(s.$spacing-large);
+  }
+}
+
+.titleWrap {
+  @include grid;
+
+  text-align: center;
+}
+
+.title {
+  @include pageSectionHeader;
+  @include columns(3, 11);
+
+  margin-bottom: to-rem(s.$page-section-intro-margin-bottom);
+
+  @include media-breakpoint-down(md) {
+    @include columns(2, 8);
+  }
+}
+
+.visual {
+  margin-bottom: to-rem(52px);
+
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
+}
+
+.lineGraphic {
+  display: flex;
+  position: relative;
+  align-items: center;
+  height: $circle-diameter;
+  margin-bottom: $line-bottom-margin;
+
+  &_Circles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  &_Container {
+    height: 100%;
+  }
+
+  &_Line {
+    width: 100%;
+    height: 20px;
+    background-color: $darkblue-500;
+  }
+
+  &_Circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $circle-diameter;
+    height: $circle-diameter;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 4px;
+    border: 4px solid $darkblue-500;
+    border-radius: 50%;
+    background: $white;
+    font-size: 32px;
+    font-size: to-rem(32px);
+    font-weight: 620;
+    line-height: 35px;
+    line-height: to-rem(35px);
+    box-sizing: border-box;
+
+    &__active {
+      border-color: $green-300;
+    }
+  }
+}
+
+.titleGraphic {
+  align-items: center;
+
+  &_Line {
+    width: 100%;
+    height: 20px;
+    background-color: $darkblue-500;
+  }
+
+  &_TitleWrap {
+    position: relative;
+    text-align: center;
+  }
+
+  &_Title {
+    @include buttonReset;
+    @include body3;
+
+    position: relative;
+    margin: -($circle-diameter + $line-bottom-margin + 12px) 20px 0;
+    padding-top: $circle-diameter + $line-bottom-margin + 12px;
+    color: $darkblue-400;
+
+    &__active {
+      color: $darkblue-100;
+    }
+
+    &Underline {
+      position: absolute;
+      bottom: -16px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      transform: scaleX(0);
+      transform-origin: left;
+      background-color: $green-300;
+      content: "";
+    }
+
+    &__active,
+    &:hover,
+    &:focus {
+      .titleGraphic_TitleUnderline {
+        transform: scaleX(1);
+      }
+    }
+
+    &:hover,
+    &:focus {
+      .titleGraphic_TitleUnderline {
+        transition: transform 0.25s ease-out;
+      }
+    }
+  }
+
+  &_Arrow {
+    flex: 0 0 24px;
+    text-align: center;
+
+    svg {
+      height: auto;
+    }
+  }
+}
+
+.titleGraphic,
+.lineGraphic_Container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.lineGraphic_CircleWrap,
+.titleGraphic_TitleWrap {
+  flex: 0 1 176px;
+}
+
+.stages {
+  @include grid;
+
+  align-items: start;
+  row-gap: to-rem($grid-column-gap);
+}

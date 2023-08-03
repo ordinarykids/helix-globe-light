@@ -9,11 +9,11 @@ import debounce from 'lodash.debounce'
 import cx from 'classnames'
 import type { MainNavigation, MainNavCTALink } from 'app/(frontend)/lib/sanity/fetch/fetchMainNav'
 import useIsBelowBreakpoint from 'app/(frontend)/hooks/useIsBelowBreakpoint'
+import docTypeInfo from 'app/(frontend)/utils/docTypeInfo'
+import DocTypes from 'app/(frontend)/types/docTypes'
 import StyledLink from '../StyledLink'
-import ArrowDropdown from '../svgs/ArrowDropdown'
+import CaretDropdown from '../svgs/CaretDropdown'
 import styles from './MainNav.module.scss'
-
-type teaserDocTypes = | 'blogPost'
 
 export default function MainNav({ navData }: { navData: MainNavigation }) {
   const pathname = usePathname()
@@ -76,13 +76,6 @@ export default function MainNav({ navData }: { navData: MainNavigation }) {
       )
     }
     return null
-  }
-
-  const docTypes = {
-    blogPost: {
-      text: 'Blog',
-      slug: '/blog',
-    },
   }
 
   return (
@@ -148,7 +141,7 @@ export default function MainNav({ navData }: { navData: MainNavigation }) {
                                   { [styles.menuItem_ButtonArrow__open]: openSubmenuIndex === sectionIndex },
                                 )}
                               >
-                                <ArrowDropdown />
+                                <CaretDropdown />
                               </span>
                             </span>
                           )
@@ -161,7 +154,7 @@ export default function MainNav({ navData }: { navData: MainNavigation }) {
                           { [styles.menuItem_ButtonArrow__open]: openSubmenuIndex === sectionIndex },
                         )}
                       >
-                        <ArrowDropdown />
+                        <CaretDropdown />
                       </span>
                     </button>
                     <div
@@ -260,12 +253,12 @@ export default function MainNav({ navData }: { navData: MainNavigation }) {
                             )}
                             <div className={styles.teaser_TextWrap}>
                               <p className={styles.teaser_Type}>
-                                {`Featured ${docTypes[teaser._type as teaserDocTypes].text}`}
+                                {`Featured ${docTypeInfo[teaser._type as DocTypes].text}`}
                               </p>
                               <p className={styles.teaser_Title}>
                                 {teaser.title}
                               </p>
-                              <StyledLink text='Read More' link={`${docTypes[teaser._type as teaserDocTypes].slug}/${teaser.slug}`} />
+                              <StyledLink text='Read More' link={`${docTypeInfo[teaser._type as DocTypes].slug}/${teaser.slug}`} />
                             </div>
                           </div>
                         )}

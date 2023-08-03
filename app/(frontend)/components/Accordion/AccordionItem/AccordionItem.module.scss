@@ -20,8 +20,8 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding-top: to-rem(40);
-  padding-bottom: to-rem(40);
+  padding-top: to-rem(40px);
+  padding-bottom: to-rem(40px);
   column-gap: 24px;
   color: $white;
   text-align: left;
@@ -29,8 +29,8 @@
   @include media-breakpoint-down(sm) {
     @include headerMobileSm;
 
-    padding-top: to-rem(24);
-    padding-bottom: to-rem(24);
+    padding-top: to-rem(24px);
+    padding-bottom: to-rem(24px);
   }
 }
 
@@ -70,10 +70,10 @@
 }
 
 .text {
-  margin-bottom: to-rem(40);
+  margin-bottom: to-rem(40px);
 
   @include media-breakpoint-down(sm) {
-    margin-bottom: to-rem(24);
+    margin-bottom: to-rem(24px);
   }
 
   > :last-child {

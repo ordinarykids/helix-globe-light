@@ -1,0 +1,36 @@
+@use "../../styles/typography" as *;
+@use "../../styles/colors" as *;
+
+.StyledLink {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 3px;
+
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
+
+  svg path {
+    fill: $blue-300;
+  }
+}
+
+.text {
+  @include body6;
+
+  margin-right: 8px;
+  color: $blue-300;
+}
+
+.light {
+  .text {
+    color: $white;
+  }
+
+  svg path {
+    fill: $white;
+  }
+}

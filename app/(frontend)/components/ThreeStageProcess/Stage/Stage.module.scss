@@ -1,0 +1,49 @@
+@use "../../../styles/typography" as *;
+@use "../../../styles/colors" as *;
+@use "../../../styles/mixins" as *;
+
+.stage {
+  @include spanColumns(6, 2);
+  @include dropShadow;
+
+  padding: 24px;
+  background-color: $white;
+  overflow: hidden;
+
+  @include media-breakpoint-up(md) {
+    @include spanColumns(8, 3);
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include spanColumns(4);
+
+    visibility: hidden;
+
+    &__active {
+      visibility: visible;
+    }
+  }
+}
+
+.title {
+  @include headerDesktopSm;
+
+  margin-top: to-rem(8px);
+  margin-bottom: 0;
+}
+
+.subtitle {
+  @include body7;
+
+  margin-top: to-rem(8px);
+}
+
+.description {
+  @include body5;
+
+  margin-top: to-rem(16px);
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}

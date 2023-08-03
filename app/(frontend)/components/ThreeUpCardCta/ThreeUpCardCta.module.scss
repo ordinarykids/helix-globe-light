@@ -1,0 +1,59 @@
+@use "../../styles/colors" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/typography" as *;
+
+.container {
+  @include containerGrid;
+
+  row-gap: to-rem(24px);
+}
+
+.cta {
+  @include spanColumns(4);
+  @include dropShadow;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: to-rem(40px) to-rem(24px);
+  border-radius: 4px;
+  background-color: $white;
+  overflow: hidden;
+
+  &_ImageWrap {
+    position: relative;
+    width: 100%;
+    height: 0;
+    margin-bottom: to-rem(24px);
+    padding-bottom: 58.9%;
+    background-color: $coolgray-300;
+  }
+
+  &_Image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &_Type {
+    @include body13;
+
+    margin-bottom: to-rem(8px);
+    color: $darkgray-100;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &_Title {
+    @include body3;
+
+    margin-bottom: to-rem(24px);
+    color: $body-text-color;
+    text-align: center;
+  }
+
+  &_Button {
+    margin-top: auto;
+  }
+}
