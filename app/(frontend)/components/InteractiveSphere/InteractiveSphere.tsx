@@ -3,8 +3,8 @@
 /* eslint-disable */
 import * as THREE from 'three'
 import { Suspense, useEffect, useLayoutEffect, useState, useRef } from 'react'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { ScrollControls, Sky, useScroll, useGLTF, useAnimations, extend } from '@react-three/drei'
+import { Canvas, useFrame, useThree, extend } from '@react-three/fiber'
+import { ScrollControls, Sky, useScroll, useGLTF, useAnimations } from '@react-three/drei'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './InteractiveSphere.module.scss'
 
@@ -54,7 +54,8 @@ function Sphere() {
 
   return (
     <div id='interactiveSphere' className={styles.wrap} ref={sphereWrapRef}>
-      <Canvas width="100%" shadows camera={{ position: [0, 0, 1] }} onCreated={((state) => ScrollTrigger.refresh())}>
+      /* tslint:disable */
+      <Canvas  shadows camera={{ position: [0, 0, 1] }} onCreated={((state) => ScrollTrigger.refresh())}>
         <ambientLight intensity={1} />
         {/* <Controls /> */}
         {/* <fog attach="fog" args={['#ff5020', 5, 18]} /> */}
@@ -91,9 +92,9 @@ function HelixSphere({ ...props }) {
 
   // This hook gives you offets, ranges and other useful things
   const scroll = useScroll()
-  const { scene, nodes, animations } = useGLTF('/wtf-15.glb')
+  const { scene, animations } = useGLTF('/wtf-15.glb')
   const { actions } = useAnimations(animations, scene)
-  useLayoutEffect(() => Object.values(nodes).forEach((node) => (node.receiveShadow = node.castShadow = true)))
+  //useLayoutEffect(() => Object.values(nodes).forEach((node) => (node.receiveShadow = node.castShadow = true)))
   // useEffect(() => void (actions['Take 001'].play().paused = true), [actions])
   useFrame((state, delta) => {
     // const action = actions['Take 001']
