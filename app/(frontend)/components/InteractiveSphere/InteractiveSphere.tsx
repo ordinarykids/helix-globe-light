@@ -14,7 +14,7 @@ import styles from './InteractiveSphere.module.scss'
 function Sphere() {
 
   const sphereWrapRef = useRef<HTMLDivElement | null>(null)
-  const [globePositon, setGlobePosition] = useState(0)
+  const [globePosition, setGlobePosition] = useState(0)
   useEffect(() => {
     const onScroll = () => {
       if (sphereWrapRef.current) {
@@ -38,7 +38,7 @@ function Sphere() {
     <div id='interactiveSphere' className={styles.wrap} ref={sphereWrapRef}>
       <Canvas shadows camera={{ position: [10, 0, 120], fov: 20 }} onCreated={((state) => ScrollTrigger.refresh())}>
         <ambientLight intensity={1} />
-        <HelixSphere scale={9} position={[globePositon, 4, 8]} />
+        <HelixSphere scale={9} position={[globePosition, 4, 8]} />
       </Canvas>
     </div>
   )
