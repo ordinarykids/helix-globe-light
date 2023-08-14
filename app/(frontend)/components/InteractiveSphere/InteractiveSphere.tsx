@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client'
 
 /* eslint-disable */
@@ -28,6 +29,7 @@ function Sphere() {
   // console.log(scrollPosition); // Here, we are printing the scrollPosition on the console. It will print a new value every time it is updated.
 
   const sphereWrapRef = useRef<HTMLDivElement | null>(null)
+  const [globePositon, setGlobePosition] = useState(0)
   useEffect(() => {
     const onScroll = () => {
       if (sphereWrapRef.current) {
@@ -46,9 +48,22 @@ function Sphere() {
       }
 
 
+      if (window.innerWidth < 800) {
+        setGlobePosition([1])
+      } else {
+        setGlobePosition([16])
+      }
+
+
+
     }
     window.addEventListener('scroll', onScroll)
+    window.addEventListener('resize', onScroll);
+    onScroll()
 
+
+    
+    
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -61,7 +76,7 @@ function Sphere() {
         {/* <fog attach="fog" args={['#ff5020', 5, 18]} /> */}
         {/* <spotLight angle={0.14} color="#ffd0d0" penumbra={1} position={[25, 50, -20]} shadow-mapSize={[2048, 2048]} shadow-bias={-0.0001} castShadow /> */}
         {/* <Sky scale={1000} sunPosition={[2, 0.4, 10]} /> */}
-        <HelixSphere scale={9} position={[16, 1, 1]} />
+        <HelixSphere scale={9} position={[globePositon, 1, 1]} />
       </Canvas>
       {/* <div cla></div> */}
     </div>
@@ -75,24 +90,29 @@ function HelixSphere({ ...props }) {
 
 
   const [currentScrollY, setCurrentScrollY] = useState(0)
+  
   useEffect(() => {
     const onScroll = () => {
       if (sphereWrapRef.current) {
         setCurrentScrollY(window.scrollY)
+
+        
+
         // const scaleUpPerPxScroll = 1 + (currentScrollY / 100)
         // sphereWrapRef.current.style.transform = `scale(${scaleUpPerPxScroll}) translateX(-${currentScrollY}px)`
         // sphereWrapRef.current.style.opacity = `${Math.max(1 - (currentScrollY / 1000), 0)}`
       }
     }
     window.addEventListener('scroll', onScroll)
-
+    onScroll();
+    
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-nocheck
 
-  
+
   // This hook gives you offets, ranges and other useful things
   const scroll = useScroll()
   const { scene, animations } = useGLTF('/wtf-15.glb')
@@ -103,8 +123,9 @@ function HelixSphere({ ...props }) {
     // const action = actions['Take 001']
     // The offset is between 0 and 1, you can apply it to your models any way you like
     const offset = 1 - currentScrollY / 900;
+   // console.log(offset)
     // action.time = THREE.MathUtils.damp(action.time, (action.getClip().duration / 2) * offset, 100, delta)
-    state.camera.position.set(10, 1, 120)
+    state.camera.position.set(10 / offset, 1 * offset*4, 120*offset)
     state.camera.rotation.set(0, offset * 42, offset * 2)
     state.camera.lookAt(0, 0, 0)
     //console.log(state.camera)
