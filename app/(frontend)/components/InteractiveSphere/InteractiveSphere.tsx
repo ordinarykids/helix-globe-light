@@ -6,6 +6,7 @@ import { Suspense, useEffect, useLayoutEffect, useState, useRef } from 'react'
 import { Canvas, useFrame, useThree, extend } from '@react-three/fiber'
 import { ScrollControls, Sky, useScroll, useGLTF, useAnimations } from '@react-three/drei'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { gsap } from 'gsap'
 import styles from './InteractiveSphere.module.scss'
 
 
@@ -37,10 +38,10 @@ function Sphere() {
         // sphereWrapRef.current.style.top = `${Math.max(1 - (currentScrollY / 900), 0)}`
 
         // sphereWrapRef.current.style.transform = `translateY(${currentScrollY}px)`
-        sphereWrapRef.current.style.left = '200px'
-        if (currentScrollY > 400) {
-          // sphereWrapRef.current.style.position = 'relative'
-        }
+
+        // if (currentScrollY > 400) {
+        //   // sphereWrapRef.current.style.position = 'relative'
+        // }
 
       }
 
@@ -54,13 +55,13 @@ function Sphere() {
 
   return (
     <div id='interactiveSphere' className={styles.wrap} ref={sphereWrapRef}>
-      <Canvas  shadows camera={{ position: [0, 0, 1] }} onCreated={((state) => ScrollTrigger.refresh())}>
+      <Canvas shadows camera={{ position: [10, 1, 120], fov: 20 }} onCreated={((state) => ScrollTrigger.refresh())}>
         <ambientLight intensity={1} />
         {/* <Controls /> */}
         {/* <fog attach="fog" args={['#ff5020', 5, 18]} /> */}
         {/* <spotLight angle={0.14} color="#ffd0d0" penumbra={1} position={[25, 50, -20]} shadow-mapSize={[2048, 2048]} shadow-bias={-0.0001} castShadow /> */}
         {/* <Sky scale={1000} sunPosition={[2, 0.4, 10]} /> */}
-        <HelixSphere scale={3} position={[0, 1, 1]} />
+        <HelixSphere scale={9} position={[16, 1, 1]} />
       </Canvas>
       {/* <div cla></div> */}
     </div>
@@ -100,10 +101,28 @@ function HelixSphere({ ...props }) {
     // The offset is between 0 and 1, you can apply it to your models any way you like
     const offset = 1 - currentScrollY / 900;
     // action.time = THREE.MathUtils.damp(action.time, (action.getClip().duration / 2) * offset, 100, delta)
-    state.camera.position.set(Math.sin(offset) * -9, Math.atan(offset * Math.PI * 2) * 9, Math.cos((offset * Math.PI) / 3) * -.4)
+    state.camera.position.set(10, 1, 120)
     state.camera.rotation.set(0, offset * 42, offset * 2)
     state.camera.lookAt(0, 0, 0)
+    //console.log(state.camera)
   })
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.to(sphereWrapRef.current.rotation, 
+        { z: "+=.03", repeat: -1, ease: 'none', repeatRefresh: true })
+      gsap.to(sphereWrapRef.current.rotation,
+        { y: "-=.05", repeat: -1, ease: 'none', repeatRefresh: true })
+      gsap.to(sphereWrapRef.current.rotation,
+        { x: "+=.06", repeat: -1, ease: 'none', repeatRefresh: true })
+    }, sphereWrapRef); // <- scopes all selector text inside the context to this component (optional, default is document)
+    return () => ctx.revert(); // cleanup! 
+
+  }, []);
+
+
+
+  
   return <primitive object={scene} {...props} ref={sphereWrapRef} />
 }
 

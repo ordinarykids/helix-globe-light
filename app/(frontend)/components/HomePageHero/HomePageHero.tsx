@@ -32,7 +32,7 @@ export default function HomePageHero({
 
   useEffect(() => {
     // DOM elements ready for animation
-    // Use gsap matchMedia for responsive targeting
+    // Use gsatp matchMedia for responsive targeing
     const mm = gsap.matchMedia(animationRootScope)
     // Only run the animation on desktop
     mm.add(
@@ -49,10 +49,12 @@ export default function HomePageHero({
                 id: 'stID',
                 trigger: animationRootScope.current,
                 start: 'top 80',
-                end: '+=1000',
+                end: '+=400',
                 pin: true,
                 scrub: 1,
+                pinSpacing: true
               },
+
             })
           }
         }

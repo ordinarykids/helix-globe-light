@@ -15,10 +15,43 @@
   // background-color: #ccc;
     display: block;
     position: absolute;
+    background-color: aquamarine;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     width: 100%;
     height: 100%;
+    margin-bottom: 400px;
+    aspect-ratio: 1;
+}
+
+@media only screen and (max-width: 800px) {
+  .wrap {
+      position: relative;
+      right: 0;
+      left: 0;
+      top: 4rem;
+      width: 100%;
+      height: 100%;
+      // transition: transform 0.25s, opacity 0.25s;
+      aspect-ratio: 1;
+      overflow-y: hidden;
+    }
+  
+  
+    .wrap canvas {
+      // background-color: #ccc;
+      display: block;
+      position: absolute;
+      background-color: aquamarine;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      margin-bottom: 400px;
+      aspect-ratio: 1;
+    }
 }
