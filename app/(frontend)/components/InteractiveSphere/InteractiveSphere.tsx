@@ -96,7 +96,7 @@ function HelixSphere({ ...props }) {
   const { actions } = useAnimations(animations, scene)
   //useLayoutEffect(() => Object.values(nodes).forEach((node) => (node.receiveShadow = node.castShadow = true)))
   // useEffect(() => void (actions['Take 001'].play().paused = true), [actions])
-  useFrame((state, delta) => {
+  useFrame((state, delta) => { 
     // const action = actions['Take 001']
     // The offset is between 0 and 1, you can apply it to your models any way you like
     const offset = 1 - currentScrollY / 900;
