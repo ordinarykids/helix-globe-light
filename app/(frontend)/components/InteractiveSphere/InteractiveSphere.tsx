@@ -11,22 +11,7 @@ import { gsap } from 'gsap'
 import styles from './InteractiveSphere.module.scss'
 
 
-// import useScrollPosition from "./useScrollPosition";
-
-// extend({ OrbitControls })
-
-// const Controls = () => {
-//   const { camera, gl } = useThree()
-//   const ref = useRef()
-//   useFrame(() => ref.current.update())
-//   return <OrbitControls ref={ref} args={[camera, gl.domElement]} />
-// }
-
 function Sphere() {
-
-  // const scrollPosition = useScrollPosition();
-
-  // console.log(scrollPosition); // Here, we are printing the scrollPosition on the console. It will print a new value every time it is updated.
 
   const sphereWrapRef = useRef<HTMLDivElement | null>(null)
   const [globePositon, setGlobePosition] = useState(0)
@@ -34,51 +19,27 @@ function Sphere() {
     const onScroll = () => {
       if (sphereWrapRef.current) {
         const currentScrollY = window.scrollY
-        // const scaleUpPerPxScroll = 1 + (currentScrollY / 100)
-        // sphereWrapRef.current.style.transform = `scale(${scaleUpPerPxScroll}) translateX(-${currentScrollY}px)`
         sphereWrapRef.current.style.opacity = `${Math.max(1 - (currentScrollY / 900), 0)}`
-        // sphereWrapRef.current.style.top = `${Math.max(1 - (currentScrollY / 900), 0)}`
-
-        // sphereWrapRef.current.style.transform = `translateY(${currentScrollY}px)`
-
-        // if (currentScrollY > 400) {
-        //   // sphereWrapRef.current.style.position = 'relative'
-        // }
-
       }
-
-
       if (window.innerWidth < 800) {
         setGlobePosition([1])
       } else {
         setGlobePosition([16])
       }
-
-
-
     }
     window.addEventListener('scroll', onScroll)
     window.addEventListener('resize', onScroll);
     onScroll()
-
-
-    
-    
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
 
   return (
     <div id='interactiveSphere' className={styles.wrap} ref={sphereWrapRef}>
-      <Canvas shadows camera={{ position: [10, 1, 120], fov: 20 }} onCreated={((state) => ScrollTrigger.refresh())}>
+      <Canvas shadows camera={{ position: [10, 0, 120], fov: 20 }} onCreated={((state) => ScrollTrigger.refresh())}>
         <ambientLight intensity={1} />
-        {/* <Controls /> */}
-        {/* <fog attach="fog" args={['#ff5020', 5, 18]} /> */}
-        {/* <spotLight angle={0.14} color="#ffd0d0" penumbra={1} position={[25, 50, -20]} shadow-mapSize={[2048, 2048]} shadow-bias={-0.0001} castShadow /> */}
-        {/* <Sky scale={1000} sunPosition={[2, 0.4, 10]} /> */}
-        <HelixSphere scale={9} position={[globePositon, 1, 1]} />
+        <HelixSphere scale={9} position={[globePositon, 4, 8]} />
       </Canvas>
-      {/* <div cla></div> */}
     </div>
   )
 }
@@ -95,12 +56,6 @@ function HelixSphere({ ...props }) {
     const onScroll = () => {
       if (sphereWrapRef.current) {
         setCurrentScrollY(window.scrollY)
-
-        
-
-        // const scaleUpPerPxScroll = 1 + (currentScrollY / 100)
-        // sphereWrapRef.current.style.transform = `scale(${scaleUpPerPxScroll}) translateX(-${currentScrollY}px)`
-        // sphereWrapRef.current.style.opacity = `${Math.max(1 - (currentScrollY / 1000), 0)}`
       }
     }
     window.addEventListener('scroll', onScroll)
@@ -111,7 +66,6 @@ function HelixSphere({ ...props }) {
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-nocheck
-
 
   // This hook gives you offets, ranges and other useful things
   const scroll = useScroll()
