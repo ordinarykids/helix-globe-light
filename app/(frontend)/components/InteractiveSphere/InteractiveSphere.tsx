@@ -89,7 +89,10 @@ function HelixSphere({ ...props }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-nocheck
 
+  
   // This hook gives you offets, ranges and other useful things
   const scroll = useScroll()
   const { scene, animations } = useGLTF('/wtf-15.glb')
