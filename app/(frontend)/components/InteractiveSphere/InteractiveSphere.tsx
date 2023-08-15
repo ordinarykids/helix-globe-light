@@ -17,14 +17,14 @@ function Sphere() {
   const [globePosition, setGlobePosition] = useState(0)
   useEffect(() => {
     const onScroll = () => {
-      if (sphereWrapRef.current) {
-        const currentScrollY = window.scrollY
-        sphereWrapRef.current.style.opacity = `${Math.max(1 - (currentScrollY / 900), 0)}`
-      }
+      // if (sphereWrapRef.current) {
+      //   const currentScrollY = window.scrollY
+      //   sphereWrapRef.current.style.opacity = `${Math.max(1 - (currentScrollY / 900), 0)}`
+      // }
       if (window.innerWidth < 800) {
-        setGlobePosition([1, 5, 24])
+        setGlobePosition([1, 5, 4])
       } else {
-        setGlobePosition([17, 5, 2])
+        setGlobePosition([15, 5, 2])
       }
     }
     window.addEventListener('scroll', onScroll)
@@ -36,7 +36,7 @@ function Sphere() {
 
   return (
     <div id='interactiveSphere' className={styles.wrap} ref={sphereWrapRef}>
-      <Canvas shadows camera={{ position: [1, 10, 12], fov: 25 }} onCreated={((state) => ScrollTrigger.refresh())}>
+      <Canvas shadows camera={{ position: [1, 10, 80], fov: 30 }} onCreated={((state) => ScrollTrigger.refresh())}>
         <ambientLight intensity={1} />
         <HelixSphere scale={9} position={globePosition} />
       </Canvas>
@@ -71,21 +71,21 @@ function HelixSphere({ ...props }) {
 
   // This hook gives you offets, ranges and other useful things
   const scroll = useScroll()
-  const { scene, animations } = useGLTF('/wtf-15.glb')
+  const { scene, animations } = useGLTF('/wtf-19-darker.glb')
   const { actions } = useAnimations(animations, scene)
   //useLayoutEffect(() => Object.values(nodes).forEach((node) => (node.receiveShadow = node.castShadow = true)))
  // useEffect(() => void (actions['firstAction'].play().paused = true), [actions])
-  useFrame((state, delta) => { 
-    // const action = actions['Take 001']
-    // The offset is between 0 and 1, you can apply it to your models any way you like
-    const offset = 1 - currentScrollY / 900;
-   // console.log(offset)
-    // action.time = THREE.MathUtils.damp(action.time, (action.getClip().duration / 2) * offset, 100, delta)
-    state.camera.position.set(10 / offset, 1 * offset*4, 120*offset)
-    state.camera.rotation.set(0, offset * 42, offset * 2)
-    state.camera.lookAt(0, 0, 0)
-    //console.log(state.camera)
-  })
+  // useFrame((state, delta) => { 
+  //   // const action = actions['Take 001']
+  //   // The offset is between 0 and 1, you can apply it to your models any way you like
+  //   const offset = 1 - currentScrollY / 900;
+  //  // console.log(offset)
+  //   // action.time = THREE.MathUtils.damp(action.time, (action.getClip().duration / 2) * offset, 100, delta)
+  //   state.camera.position.set(10 / offset, 1 * offset*4, 120*offset)
+  //   state.camera.rotation.set(0, offset * 42, offset * 2)
+  //   state.camera.lookAt(0, 0, 0)
+  //   //console.log(state.camera)
+  // })
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -111,7 +111,7 @@ author: glenatron (https://sketchfab.com/glenatron)
 license: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 source: https://sketchfab.com/models/94b24a60dc1b48248de50bf087c0f042
 title: Littlest Tokyo */
-useGLTF.preload('/wtf-15.glb')
+useGLTF.preload('/wtf-19-darker.glb')
 
 
 
