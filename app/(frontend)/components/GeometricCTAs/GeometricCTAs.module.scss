@@ -24,7 +24,6 @@
 
 .titleWrap {
   @include container;
-
   text-align: center;
 }
 
@@ -32,7 +31,7 @@
   @include pageSectionHeader;
 
   margin-bottom: to-rem(spacing.$page-section-intro-margin-bottom);
-  padding-top: to-rem(64px);
+  padding-top: to-rem(spacing.$spacing-x-large);
 }
 
 .container {

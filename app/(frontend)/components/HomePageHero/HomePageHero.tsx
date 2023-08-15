@@ -52,7 +52,7 @@ export default function HomePageHero({
                 end: '+=400',
                 pin: true,
                 scrub: 1,
-                pinSpacing: true
+                pinSpacing: false
               },
 
             })

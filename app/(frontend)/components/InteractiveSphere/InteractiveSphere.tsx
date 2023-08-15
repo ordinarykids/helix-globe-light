@@ -57,6 +57,8 @@ function HelixSphere({ ...props }) {
       if (sphereWrapRef.current) {
         setCurrentScrollY(window.scrollY)
       }
+      // plays animation when page is scrolled.
+      actions['firstAction'].play().paused = false
     }
     window.addEventListener('scroll', onScroll)
     onScroll();
@@ -69,10 +71,10 @@ function HelixSphere({ ...props }) {
 
   // This hook gives you offets, ranges and other useful things
   const scroll = useScroll()
-  const { scene, animations } = useGLTF('/wtf-15.glb')
+  const { scene, animations } = useGLTF('/helix-animation-test.glb')
   const { actions } = useAnimations(animations, scene)
   //useLayoutEffect(() => Object.values(nodes).forEach((node) => (node.receiveShadow = node.castShadow = true)))
-  // useEffect(() => void (actions['Take 001'].play().paused = true), [actions])
+  useEffect(() => void (actions['firstAction'].play().paused = true), [actions])
   useFrame((state, delta) => { 
     // const action = actions['Take 001']
     // The offset is between 0 and 1, you can apply it to your models any way you like
@@ -109,7 +111,7 @@ author: glenatron (https://sketchfab.com/glenatron)
 license: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 source: https://sketchfab.com/models/94b24a60dc1b48248de50bf087c0f042
 title: Littlest Tokyo */
-useGLTF.preload('/wtf-15.glb')
+useGLTF.preload('/helix-animation-test.glb')
 
 
 
