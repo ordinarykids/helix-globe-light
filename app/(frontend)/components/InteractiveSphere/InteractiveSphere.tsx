@@ -22,9 +22,9 @@ function Sphere() {
         sphereWrapRef.current.style.opacity = `${Math.max(1 - (currentScrollY / 900), 0)}`
       }
       if (window.innerWidth < 800) {
-        setGlobePosition([1])
+        setGlobePosition([1, 5, 24])
       } else {
-        setGlobePosition([16])
+        setGlobePosition([17, 5, 2])
       }
     }
     window.addEventListener('scroll', onScroll)
@@ -36,9 +36,9 @@ function Sphere() {
 
   return (
     <div id='interactiveSphere' className={styles.wrap} ref={sphereWrapRef}>
-      <Canvas shadows camera={{ position: [10, 0, 120], fov: 20 }} onCreated={((state) => ScrollTrigger.refresh())}>
+      <Canvas shadows camera={{ position: [1, 10, 12], fov: 25 }} onCreated={((state) => ScrollTrigger.refresh())}>
         <ambientLight intensity={1} />
-        <HelixSphere scale={9} position={[globePosition, 4, 8]} />
+        <HelixSphere scale={9} position={globePosition} />
       </Canvas>
     </div>
   )
@@ -58,7 +58,7 @@ function HelixSphere({ ...props }) {
         setCurrentScrollY(window.scrollY)
       }
       // plays animation when page is scrolled.
-      actions['firstAction'].play().paused = false
+      //actions['firstAction'].play().paused = false
     }
     window.addEventListener('scroll', onScroll)
     onScroll();
@@ -71,10 +71,10 @@ function HelixSphere({ ...props }) {
 
   // This hook gives you offets, ranges and other useful things
   const scroll = useScroll()
-  const { scene, animations } = useGLTF('/helix-animation-test.glb')
+  const { scene, animations } = useGLTF('/wtf-15.glb')
   const { actions } = useAnimations(animations, scene)
   //useLayoutEffect(() => Object.values(nodes).forEach((node) => (node.receiveShadow = node.castShadow = true)))
-  useEffect(() => void (actions['firstAction'].play().paused = true), [actions])
+ // useEffect(() => void (actions['firstAction'].play().paused = true), [actions])
   useFrame((state, delta) => { 
     // const action = actions['Take 001']
     // The offset is between 0 and 1, you can apply it to your models any way you like
@@ -92,9 +92,9 @@ function HelixSphere({ ...props }) {
       gsap.to(sphereWrapRef.current.rotation, 
         { z: "+=.03", repeat: -1, ease: 'none', repeatRefresh: true })
       gsap.to(sphereWrapRef.current.rotation,
-        { y: "-=.05", repeat: -1, ease: 'none', repeatRefresh: true })
+        { y: "-=.03", repeat: -1, ease: 'none', repeatRefresh: true })
       gsap.to(sphereWrapRef.current.rotation,
-        { x: "+=.06", repeat: -1, ease: 'none', repeatRefresh: true })
+        { x: "+=.03", repeat: -1, ease: 'none', repeatRefresh: true })
     }, sphereWrapRef); // <- scopes all selector text inside the context to this component (optional, default is document)
     return () => ctx.revert(); // cleanup! 
 
@@ -111,7 +111,7 @@ author: glenatron (https://sketchfab.com/glenatron)
 license: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 source: https://sketchfab.com/models/94b24a60dc1b48248de50bf087c0f042
 title: Littlest Tokyo */
-useGLTF.preload('/helix-animation-test.glb')
+useGLTF.preload('/wtf-15.glb')
 
 
 
