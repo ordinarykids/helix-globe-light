@@ -32,7 +32,7 @@ function Sphere() {
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
+ 
 
   return (
     <div id='interactiveSphere' className={styles.wrap} ref={sphereWrapRef}>
