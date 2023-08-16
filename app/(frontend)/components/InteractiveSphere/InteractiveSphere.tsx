@@ -71,7 +71,7 @@ function HelixSphere({ ...props }) {
 
   // This hook gives you offets, ranges and other useful things
   const scroll = useScroll()
-  const { scene, animations } = useGLTF('/wtf-19-darker.glb')
+  const { scene, animations } = useGLTF('/wtf-20-darker.glb')
   const { actions } = useAnimations(animations, scene)
   //useLayoutEffect(() => Object.values(nodes).forEach((node) => (node.receiveShadow = node.castShadow = true)))
  // useEffect(() => void (actions['firstAction'].play().paused = true), [actions])
@@ -111,7 +111,7 @@ author: glenatron (https://sketchfab.com/glenatron)
 license: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 source: https://sketchfab.com/models/94b24a60dc1b48248de50bf087c0f042
 title: Littlest Tokyo */
-useGLTF.preload('/wtf-19-darker.glb')
+useGLTF.preload('/wtf-20-darker.glb')
 
 
 
