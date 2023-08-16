@@ -10,7 +10,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { gsap } from 'gsap'
 import styles from './InteractiveSphere.module.scss'
 
-
+ 
 function Sphere() {
 
   const sphereWrapRef = useRef<HTMLDivElement | null>(null)
